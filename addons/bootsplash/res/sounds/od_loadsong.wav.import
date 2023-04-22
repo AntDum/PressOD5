@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/od_loadsong.wav-a261cc0687c6888639bff43ca4859c9f.sample"
+
+[deps]
+
+source_file="res://addons/bootsplash/res/sounds/od_loadsong.wav"
+dest_files=[ "res://.import/od_loadsong.wav-a261cc0687c6888639bff43ca4859c9f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
