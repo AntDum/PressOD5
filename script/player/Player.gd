@@ -4,7 +4,7 @@ extends KinematicBody2D
 export var speed := 200.0
 var velocity := Vector2()
 
-enum { STATE_IDLE, STATE_WALKING, STATE_START_ATTACK, STATE_ATTACK, STATE_HURT, STATE_DIE, STATE_BLOCKED, STATE_NULL }
+enum { STATE_IDLE, STATE_WALKING, STATE_START_ATTACK, STATE_ATTACK, STATE_HURT, STATE_DIE, STATE_BLOCKED, STATE_NULL, STATE_CAST_1, STATE_CAST_2, STATE_CAST_3 }
 
 onready var anims = $Anim
 
@@ -27,8 +27,15 @@ func _physics_process(_delta: float) -> void:
 					state = STATE_WALKING
 			if Input.is_action_just_pressed("action"):
 				state = STATE_START_ATTACK
+			if Input.is_action_just_pressed("sort_1"):
+				state = STATE_CAST_1
+			if Input.is_action_just_pressed("sort_2"):
+				state = STATE_CAST_2
+			if Input.is_action_just_pressed("sort_3"):
+				state = STATE_CAST_3
 			_update_facing()
 			new_anim = "idle_" + facing 
+			
 		STATE_WALKING:
 			if Input.is_action_just_pressed("action"):
 				state = STATE_START_ATTACK
@@ -54,8 +61,8 @@ func _physics_process(_delta: float) -> void:
 			velocity = move_and_slide(velocity)
 
 		STATE_HURT:
-			pass
-#			anim = "Hurt"
+			new_anim = "hurt"
+
 		STATE_DIE:
 			new_anim = "Die"
 			
@@ -63,6 +70,13 @@ func _physics_process(_delta: float) -> void:
 			pass
 		STATE_NULL:
 			pass
+		STATE_CAST_1:
+			
+			state = STATE_IDLE
+		STATE_CAST_2:
+			state = STATE_IDLE
+		STATE_CAST_3:
+			state = STATE_IDLE
 			
 
 	if new_anim != anim:

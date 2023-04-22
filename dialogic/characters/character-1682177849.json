@@ -13,7 +13,11 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/sprites/players/attack/attack_front.PNG"
+			"path": "res://assets/sprites/enemy/attack/attack_front.PNG"
+		},
+		{
+			"name": "attack_left",
+			"path": "res://assets/sprites/enemy/attack/attack_left.PNG"
 		}
 	],
 	"scale": 100,

@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://script/levels/1_Woodstock.gd" type="Script" id=1]
+[ext_resource path="res://scene/prefabs/dialog_trigger.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scene/player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/terrain/terrain_atlas.png" type="Texture" id=4]
 [ext_resource path="res://scene/enemy/Enemy.tscn" type="PackedScene" id=5]
@@ -185,6 +186,9 @@ points = PoolVector2Array( 14.084, 0, 18.188, 0, 18.188, 26.44, 14.084, 26.44 )
 4/shapes = [  ]
 4/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 92, 32 )
+
 [node name="Dungeon" type="Node"]
 script = ExtResource( 1 )
 
@@ -207,5 +211,28 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
 
+[node name="Camera2D" parent="Player" index="2"]
+limit_left = -1047
+limit_top = -837
+limit_right = 932
+limit_bottom = 513
+limit_smoothed = true
+editor_draw_limits = true
+
 [node name="KinematicBody2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 140, -747 )
+
+[node name="dialogue_trigger" parent="." instance=ExtResource( 2 )]
+position = Vector2( 82, -522 )
+collision_layer = 0
+collision_mask = 2
+timeline = "metal_interaction_1"
+
+[node name="CollisionShape2D" parent="dialogue_trigger" index="0"]
+position = Vector2( 43, -57 )
+shape = SubResource( 11 )
+
+[editable path="Player"]
+[editable path="Player/HurtBox"]
+[editable path="Player/HitBox"]
+[editable path="dialogue_trigger"]
