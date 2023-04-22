@@ -15,7 +15,7 @@ enum State {
 export (State) var state = State.HAPPY
 
 var agressivity = 0.0
-var happy_center = position
+var happy_center = Vector2.ZERO
 
 var velocity = Vector2(0.0, 0.0)
 var randGen = RandomNumberGenerator.new()
@@ -37,18 +37,18 @@ func setState(newState):
 	state = newState
 	match state:
 		State.HAPPY:
-			current_target = pick_spot_around_player()
-			happy_center = position
+			current_target = pick_happy_spot()
+			happy_center = global_position
 			time_since_target_change = 0
 		State.SURROUND:
-			current_target = pick_happy_spot()
+			current_target = pick_spot_around_player()
 			time_since_target_change = 0
 		State.CHARGE:
 			pass
 
 # Moves towards target, dt is the time step, leapfrog (kdk) integration
 func move(target, dt):
-	var dir = (position - target).normalized()
+	var dir = -(global_position - target).normalized()
 	# Kick
 	velocity += ACCEL * dt/2 * dir
 	# Cap
@@ -56,12 +56,16 @@ func move(target, dt):
 	if vnorm > SPEED:
 		velocity *= SPEED/vnorm
 	# Drift
-	position += velocity * dt
+	global_position += velocity * dt
 	# Kick
 	velocity += ACCEL * dt/2 * dir
+	vnorm = velocity.length()
+	if vnorm > SPEED:
+		velocity *= SPEED/vnorm
 
 func pick_spot_around_player():
-	var center = player.position
+	print("VIDU")
+	var center = player.global_position
 	var distance = 40
 	
 	randGen.randomize()
@@ -73,9 +77,6 @@ func pick_spot_around_player():
 	
 	return Vector2(x, y)
 	
-func setPosition(newPosition):
-	happy_center = newPosition
-	position = newPosition
 
 func pick_happy_spot():
 	var distance = 40
@@ -83,7 +84,6 @@ func pick_happy_spot():
 	randGen.randomize()
 	var rng = randGen.randf()
 	var angle = 2 * PI * rng
-	
 	var x = happy_center.x + cos(angle) * distance
 	var y = happy_center.y + sin(angle) * distance
 	
@@ -91,13 +91,15 @@ func pick_happy_spot():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	print("build enemy")
+	setState(State.HAPPY) # Replace with function body.
 
 func _physics_process(delta):
 	time_since_target_change += delta
 	match state:
 		State.SURROUND:
 			if time_since_target_change > change_target_every:
+				print("COUCOU")
 				current_target = pick_spot_around_player()
 				time_since_target_change = 0
 			move(current_target, delta)

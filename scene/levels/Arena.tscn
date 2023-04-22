@@ -4,13 +4,13 @@
 [ext_resource path="res://scene/enemy/Enemy.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 53.75, 9.75 )
+extents = Vector2( 341.5, 31 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 87, 55 )
+extents = Vector2( 342.5, 249.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 47, 10 )
+extents = Vector2( 179, 25 )
 
 [node name="Arena" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,16 +24,15 @@ collision_mask = 0
 shape = SubResource( 1 )
 
 [node name="FightArea" type="Area2D" parent="."]
-position = Vector2( -1, 30 )
+position = Vector2( 0, 284 )
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FightArea"]
-position = Vector2( 1, 0 )
 shape = SubResource( 2 )
 
 [node name="TriggerSpawnArea" type="Area2D" parent="."]
-position = Vector2( 0, 87 )
+position = Vector2( 2, 593 )
 collision_layer = 0
 collision_mask = 2
 

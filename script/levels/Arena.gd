@@ -6,29 +6,32 @@ export (PackedScene) var enemy
 signal arenaCleared
 
 onready var spawnArea = $SpawnArea/CollisionShape2D.shape.extents
-onready var origin = $SpawnArea/CollisionShape2D.global_position -  spawnArea
+onready var upperLeft = $SpawnArea.global_position -  spawnArea
+onready var lowerRight = $SpawnArea.global_position +  spawnArea
 var remaining_mobs
 var player
 var aggressivity
 
 func gen_random_spawn_point():
-	var x = rand_range(origin.x, spawnArea.x)
-	var y = rand_range(origin.y, spawnArea.y)
+	var x = rand_range(upperLeft.x, lowerRight.x)
+	var y = rand_range(upperLeft.y, lowerRight.y)
+	print("New pos ",x,y)
 	return Vector2(x, y)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
 	aggressivity = PlayerInfo.aggressivity
 	remaining_mobs = (aggressivity / 10) + 1
+	print(player)
 
 
 func spawn():
 	for i in range(remaining_mobs):
-		print("Spawing mobs in arena")
 		var new_enemy = enemy.instance()
-		new_enemy.global_position = gen_random_spawn_point()
-		new_enemy.setAgressivity(aggressivity)
 		new_enemy.player = player
+		new_enemy.position = gen_random_spawn_point()
+		new_enemy.setAgressivity(aggressivity)
+
 		add_child(new_enemy)
 		$FightArea.connect("body_entered",new_enemy,"_on_PlayerEnteredArena")
 		$FightArea.connect("body_exited",new_enemy,"_on_PlayerExitedArena")
