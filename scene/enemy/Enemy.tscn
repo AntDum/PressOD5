@@ -237,7 +237,6 @@ scale = Vector2( 0.17, 0.17 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="anims" type="AnimationPlayer" parent="."]
