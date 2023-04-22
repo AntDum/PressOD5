@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://script/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://scene/prefabs/HurtBox.tscn" type="PackedScene" id=2]
@@ -11,6 +11,44 @@ height = 30.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HitBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 47, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "idle"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Die"
@@ -46,10 +84,41 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 47, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Walk"
 
 [sub_resource type="CapsuleShape2D" id=7]
 radius = 40.0
 height = 28.0
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 17.0
+height = 42.0
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -69,11 +138,12 @@ current = true
 smoothing_enabled = true
 smoothing_speed = 4.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Anim" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 3 )
 anims/Die = SubResource( 4 )
 anims/Idle = SubResource( 5 )
 anims/RESET = SubResource( 6 )
+anims/Walk = SubResource( 9 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 2 )]
 visible = false
@@ -84,6 +154,11 @@ shape = SubResource( 7 )
 
 [node name="HitBox" parent="." instance=ExtResource( 3 )]
 collision_mask = 8
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( 47, 0 )
+shape = SubResource( 8 )
+disabled = true
 
 [editable path="HurtBox"]
 [editable path="HitBox"]
