@@ -1,0 +1,41 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1682177849.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1682177849.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "METAAAAAAAAL !!!!!"
+		},
+		{
+			"character": "character-1682177849.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "T'es là pour ton van ? Le boss est déjà loin, il l'a amené à notre QG : le HELLFEST !!! Si t'essayes de la rejoindre, je vais devoir te dévisser la tête."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1682177897.json",
+		"name": "metal_interaction_1"
+	}
+}
