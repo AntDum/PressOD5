@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://script/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://scene/prefabs/HurtBox.tscn" type="PackedScene" id=2]
@@ -146,6 +146,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -412,6 +424,21 @@ tracks/4/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=21]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=13]
 resource_name = "idle_back"
 loop = true
@@ -598,7 +625,7 @@ height = 28.0
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 21.0
-height = 14.0
+height = 48.0
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -627,6 +654,7 @@ anims/attack_back = SubResource( 9 )
 anims/attack_front = SubResource( 10 )
 anims/attack_left = SubResource( 11 )
 anims/attack_right = SubResource( 12 )
+anims/hurt = SubResource( 21 )
 anims/idle_back = SubResource( 13 )
 anims/idle_front = SubResource( 14 )
 anims/idle_left = SubResource( 15 )

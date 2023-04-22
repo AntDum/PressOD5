@@ -15,7 +15,7 @@ var new_anim = ""
 
 var facing = "front"
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	match state:
 		STATE_IDLE:
 			if (
@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		anim = new_anim
 		anims.play(anim)
 
-func idle(n = null):
+func idle(_n = null):
 	state = STATE_IDLE
 	velocity = Vector2.ZERO
 	
