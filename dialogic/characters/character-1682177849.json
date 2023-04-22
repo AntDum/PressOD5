@@ -1,0 +1,21 @@
+{
+	"color": "#ff736969",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1682177849.json",
+	"mirror_portraits": false,
+	"name": "metalleux",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/sprites/players/attack/attack_front.PNG"
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}
