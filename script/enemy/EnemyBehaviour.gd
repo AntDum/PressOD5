@@ -25,6 +25,7 @@ var current_target
 
 var player
 
+
 func setAgressivity(value):
 	agressivity = value
 	if value >= TRESHOLD:
@@ -61,8 +62,8 @@ func pick_spot_around_player():
 	var rng = randGen.randf()
 	var angle = 2 * PI * rng
 	
-	var x = center + cos(angle) * distance
-	var y = center + sin(angle) * distance
+	var x = center.x + cos(angle) * distance
+	var y = center.y + sin(angle) * distance
 	
 	return Vector2(x, y)
 	
@@ -96,10 +97,11 @@ func _physics_process(delta):
 		State.CHARGE:
 			pass
 			
-			
-			
-			
-			
-			
-			
-			
+func _on_PlayerEnteredArena(body):
+	print("PLAYER ENTERED FIGHT ZONE")
+	if(agressivity >= TRESHOLD):
+		state = State.SURROUND
+		
+func _on_PlayerExitedArena(body):
+	print("PLAYER EXITED FIGHT ZONE")
+	state = State.HAPPY

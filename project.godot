@@ -116,6 +116,10 @@ version_control_plugin_name="GitAPI"
 
 enabled=PoolStringArray( "res://addons/bootsplash/plugin.cfg", "res://addons/dialogic/plugin.cfg" )
 
+[global]
+
+scene=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
