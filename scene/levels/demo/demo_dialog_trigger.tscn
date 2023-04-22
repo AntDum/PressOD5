@@ -9,11 +9,14 @@ extents = Vector2( 15, 30.5 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
 position = Vector2( -13, 19 )
 
 [node name="dialogue_trigger" parent="." instance=ExtResource( 2 )]
 position = Vector2( -208, 50 )
-timeline = "metal_interaction"
+collision_layer = 0
+collision_mask = 2
+timeline = "introduction"
 
 [node name="CollisionShape2D" parent="dialogue_trigger" index="0"]
 position = Vector2( 5, -20.5 )
