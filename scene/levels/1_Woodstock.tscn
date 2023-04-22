@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://script/levels/1_Woodstock.gd" type="Script" id=1]
+
+[node name="Dungeon" type="Node"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 1
+
+[node name="Spawners" type="Node" parent="."]
