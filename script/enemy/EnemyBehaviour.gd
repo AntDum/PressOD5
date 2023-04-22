@@ -104,4 +104,4 @@ func _on_PlayerEnteredArena(body):
 		
 func _on_PlayerExitedArena(body):
 	print("PLAYER EXITED FIGHT ZONE")
-	state = State.CHARGE
+	state = State.HAPPY

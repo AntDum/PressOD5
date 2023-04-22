@@ -26,7 +26,7 @@ func spawn():
 	for i in range(remaining_mobs):
 		print("Spawing mobs in arena")
 		var new_enemy = enemy.instance()
-		new_enemy.position = gen_random_spawn_point()
+		new_enemy.global_position = gen_random_spawn_point()
 		new_enemy.setAgressivity(aggressivity)
 		new_enemy.player = player
 		add_child(new_enemy)
