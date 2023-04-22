@@ -8,7 +8,7 @@
 [node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 1 )
 SPEED = 100.0
-ACCEL = 35.0
+ACCEL = 75.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 215, 155.281 )
