@@ -34,15 +34,15 @@ func setAgressivity(value):
 func move(target, dt):
 	var dir = (global_position - target).normalized()
 	# Kick
-	velocity += ACCEL * dt/2
+	velocity += ACCEL * dt/2 * dir
 	# Cap
-	var vnorm = velocity.norm()
+	var vnorm = velocity.length()
 	if vnorm > SPEED:
 		velocity *= SPEED/vnorm
 	# Drift
 	position += velocity * dt
 	# Kick
-	velocity += ACCEL * dt/2
+	velocity += ACCEL * dt/2 * dir
 
 func jump_around(distance):
 	randGen.randomize()
@@ -67,15 +67,15 @@ func pick_spot_around_player():
 	return Vector2(x, y)
 	
 func pick_spot_around_self():
-	var center = position
+	var center = self.global_position
 	var distance = 40
 	
 	randGen.randomize()
 	var rng = randGen.randf()
 	var angle = 2 * PI * rng
 	
-	var x = center + cos(angle) * distance
-	var y = center + sin(angle) * distance
+	var x = center.x + cos(angle) * distance
+	var y = center.y + sin(angle) * distance
 	
 	return Vector2(x, y)
 
