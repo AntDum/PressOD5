@@ -1,19 +1,252 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://script/enemy/EnemyBehaviour.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/enemies/Sans titre.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/enemy/idle/idle_right.PNG" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/enemy/walk/walk_front_2.PNG" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/enemy/idle/idle_front.PNG" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/enemy/walk/walk_front_1.PNG" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/enemy/idle/idle_left.PNG" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/enemy/idle/idle_back.PNG" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/enemy/walk/walk_back_2.PNG" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/enemy/walk/walk_left_2.PNG" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/enemy/walk/walk_back_1.PNG" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/enemy/walk/walk_left_1.PNG" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/enemy/walk/walk_right_2.PNG" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/enemy/walk/walk_right_1.PNG" type="Texture" id=13]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 58, 51.5 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 20.0
+height = 44.0
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle_back"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.98, 0.95 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle_front"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.98, 0.95 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle_left"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.98, 0.95 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle_right"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/Sprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.98, 0.95 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "walk_back"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ), ExtResource( 8 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "walk_front"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ), ExtResource( 3 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "walk_left"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ), ExtResource( 9 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "walk_right"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 13 ), ExtResource( 12 ) ]
+}
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 1 )
 SPEED = 100.0
 ACCEL = 50.0
 
+[node name="body" type="Node2D" parent="."]
+scale = Vector2( 0.17, 0.17 )
+
+[node name="Sprite" type="Sprite" parent="body"]
+texture = ExtResource( 4 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.515556, 0.458056 )
-texture = ExtResource( 2 )
+[node name="anims" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/idle_back = SubResource( 3 )
+anims/idle_front = SubResource( 4 )
+anims/idle_left = SubResource( 5 )
+anims/idle_right = SubResource( 6 )
+anims/walk_back = SubResource( 8 )
+anims/walk_front = SubResource( 7 )
+anims/walk_left = SubResource( 9 )
+anims/walk_right = SubResource( 10 )

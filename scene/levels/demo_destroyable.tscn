@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scene/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/enemy/destroyable.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 486, 330 )
+
+[node name="destroyable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 668, 316 )
+
+[node name="destroyable2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 604, 465 )
+
+[node name="destroyable3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 399, 486 )
+
+[node name="destroyable4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 247, 315 )
+
+[node name="destroyable5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 396, 126 )
+
+[node name="destroyable6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 576, 145 )

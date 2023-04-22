@@ -81,3 +81,4 @@ visible = false
 position = Vector2( -104, 17 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true

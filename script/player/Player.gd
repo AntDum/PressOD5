@@ -62,9 +62,12 @@ func _physics_process(delta: float) -> void:
 		anim = new_anim
 		anims.play(anim)
 
-func idle():
+func idle(n = null):
 	state = STATE_IDLE
 	velocity = Vector2.ZERO
+	
+func _ready():
+	anims.play("idle_front")
 
 func _update_facing():
 	if Input.is_action_pressed("move_left"):

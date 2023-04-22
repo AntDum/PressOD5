@@ -65,6 +65,10 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Tu devrais aller leur parler, man. Et par Babylone, n'oublie pas man, la violence ne mène à rien, man."
+		},
+		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
 		}
 	],
 	"metadata": {
