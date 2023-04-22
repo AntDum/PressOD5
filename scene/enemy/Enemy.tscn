@@ -4,17 +4,16 @@
 [ext_resource path="res://assets/sprites/enemies/Sans titre.jpg" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 58, 51.5 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 1 )
 SPEED = 100.0
-ACCEL = 75.0
+ACCEL = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 215, 155.281 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 215, 155.469 )
 scale = Vector2( 0.515556, 0.458056 )
 texture = ExtResource( 2 )
