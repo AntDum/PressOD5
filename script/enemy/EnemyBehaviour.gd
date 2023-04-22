@@ -22,6 +22,10 @@ enum State {
 
 export (State) var state = State.HAPPY
 
+onready var anims = $anims
+var anim = ""
+var new_anim = ""
+
 var randGen = RandomNumberGenerator.new()
 
 func get_randf(from, to):
@@ -81,10 +85,23 @@ func move(target, dt):
 	# Stop moving if near target to avoid feedback loops and anihilation of the human race in a giant fireball
 	if diff.length() < 10:
 		velocity = Vector2.ZERO
+		new_anim = "idle_front"
 		return
 	var dir = diff.normalized()
 	# Kick
 	velocity += ACCEL * dt/2 * dir
+	
+	# Anim
+	var walk_angle = atan2(velocity.y, velocity.x) + PI
+	if walk_angle < PI/4 or walk_angle > 7*PI/4:
+		new_anim = "walk_left"
+	elif walk_angle < 3*PI/4:
+		new_anim = "walk_back"
+	elif walk_angle < 5*PI/4:
+		new_anim = "walk_right"
+	else:
+		new_anim = "walk_front"
+	
 	# Cap
 	var vnorm = velocity.length()
 	if vnorm > SPEED:
@@ -93,6 +110,9 @@ func move(target, dt):
 	move_and_slide(velocity)
 	# Kick
 	velocity += ACCEL * dt/2 * dir
+	if new_anim != anim:
+		anim = new_anim
+		anims.play(anim)
 
 func pick_spot_around_player():
 	var center = player.global_position
@@ -178,6 +198,9 @@ func _physics_process(delta):
 					print_debug("Hit ", collision.collider.name)
 					current_target = return_to_circle()
 					setState(State.SURROUND)
+	if new_anim != anim:
+		anim = new_anim
+		anims.play(anim)
 
 func _on_PlayerEnteredArena(body):
 	print("PLAYER ENTERED FIGHT ZONE")
