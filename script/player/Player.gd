@@ -13,6 +13,8 @@ var state = STATE_IDLE
 var anim = ""
 var new_anim = ""
 
+var facing = "front"
+
 func _physics_process(delta: float) -> void:
 	match state:
 		STATE_IDLE:
@@ -25,7 +27,8 @@ func _physics_process(delta: float) -> void:
 					state = STATE_WALKING
 			if Input.is_action_just_pressed("action"):
 				state = STATE_ATTACK
-			new_anim = "Idle"
+			_update_facing()
+			new_anim = "idle_" + facing 
 		STATE_WALKING:
 			if Input.is_action_just_pressed("action"):
 				state = STATE_ATTACK
@@ -34,13 +37,15 @@ func _physics_process(delta: float) -> void:
 			velocity = input * speed
 			velocity = move_and_slide(velocity)
 			
+			_update_facing()
 			if velocity.length() > 5:
-				new_anim = "walk"
+				new_anim = "walk_" + facing
 			else:
 				idle()
 			
 		STATE_ATTACK:
-			new_anim = "Attack"
+			_update_facing()
+			new_anim = "attack_" + facing
 		STATE_HURT:
 			pass
 #			anim = "Hurt"
@@ -48,6 +53,7 @@ func _physics_process(delta: float) -> void:
 			new_anim = "Die"
 		STATE_BLOCKED:
 			pass
+			
 
 	if new_anim != anim:
 		anim = new_anim
@@ -56,3 +62,13 @@ func _physics_process(delta: float) -> void:
 func idle():
 	state = STATE_IDLE
 	velocity = Vector2.ZERO
+
+func _update_facing():
+	if Input.is_action_pressed("move_left"):
+		facing = "left"
+	if Input.is_action_pressed("move_right"):
+		facing = "right"
+	if Input.is_action_pressed("move_up"):
+		facing = "back"
+	if Input.is_action_pressed("move_down"):
+		facing = "front"
