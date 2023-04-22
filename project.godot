@@ -99,7 +99,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SceneManager="*res://scene/autoload/SceneManager.tscn"
 PlayerInfo="*res://script/autoload/Player_info.gd"
 
 [display]
