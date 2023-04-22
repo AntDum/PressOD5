@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://script/enemy/door.gd" type="Script" id=1]
+
+[node name="door" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="body" type="StaticBody2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="body"]
