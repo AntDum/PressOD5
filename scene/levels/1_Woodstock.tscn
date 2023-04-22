@@ -16,3 +16,4 @@ format = 1
 position = Vector2( 136, 60 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true

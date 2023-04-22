@@ -4,6 +4,6 @@ extends Node
 signal change_scene(to)
 
 func _ready():
-	pass
+	$Arenas/Node2D.player = $Player
 
 
