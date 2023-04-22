@@ -64,6 +64,7 @@ func move(target, dt):
 		velocity *= SPEED/vnorm
 
 func pick_spot_around_player():
+	print("VIDU")
 	var center = player.global_position
 	var distance = 40
 	
@@ -90,6 +91,7 @@ func pick_happy_spot():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("build enemy")
 	setState(State.HAPPY) # Replace with function body.
 
 func _physics_process(delta):
@@ -97,6 +99,7 @@ func _physics_process(delta):
 	match state:
 		State.SURROUND:
 			if time_since_target_change > change_target_every:
+				print("COUCOU")
 				current_target = pick_spot_around_player()
 				time_since_target_change = 0
 			move(current_target, delta)

@@ -15,22 +15,23 @@ var aggressivity
 func gen_random_spawn_point():
 	var x = rand_range(upperLeft.x, lowerRight.x)
 	var y = rand_range(upperLeft.y, lowerRight.y)
-	print("New pos",x,y)
+	print("New pos ",x,y)
 	return Vector2(x, y)
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	aggressivity = PlayerInfo.aggressivity
 	remaining_mobs = (aggressivity / 10) + 1
+	print(player)
 
 
 func spawn():
 	for i in range(remaining_mobs):
-		print("Spawing mobs in arena")
 		var new_enemy = enemy.instance()
+		new_enemy.player = player
 		new_enemy.position = gen_random_spawn_point()
 		new_enemy.setAgressivity(aggressivity)
-		new_enemy.player = player
+
 		add_child(new_enemy)
 		$FightArea.connect("body_entered",new_enemy,"_on_PlayerEnteredArena")
 		$FightArea.connect("body_exited",new_enemy,"_on_PlayerExitedArena")
