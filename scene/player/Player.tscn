@@ -151,7 +151,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "attack_back"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Sprite:texture")
 tracks/0/interp = 1
@@ -171,10 +170,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false, true ]
+"values": [ false, true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("HitBox/CollisionShape2D:rotation_degrees")
@@ -207,7 +206,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.9 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -217,7 +216,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=10]
 resource_name = "attack_front"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Sprite:texture")
 tracks/0/interp = 1
@@ -237,10 +235,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false, true ]
+"values": [ false, true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("HitBox/CollisionShape2D:rotation_degrees")
@@ -273,7 +271,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.9 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -283,7 +281,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "attack_left"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Sprite:texture")
 tracks/0/interp = 1
@@ -303,10 +300,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false, true ]
+"values": [ false, true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("HitBox/CollisionShape2D:rotation_degrees")
@@ -339,7 +336,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.9 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -349,7 +346,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=12]
 resource_name = "attack_right"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Sprite:texture")
 tracks/0/interp = 1
@@ -369,10 +365,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false, true ]
+"values": [ false, true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("HitBox/CollisionShape2D:rotation_degrees")
@@ -405,7 +401,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.9 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/attack_left.PNG-a8d97b8c02699224a32661375ead8e97.stex"
+path="res://.import/idle_back.PNG-c03613f1bb305f82d9aa4fe2a6b7af9b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemy/attack/attack_left.PNG"
-dest_files=[ "res://.import/attack_left.PNG-a8d97b8c02699224a32661375ead8e97.stex" ]
+source_file="res://assets/sprites/players/idle_back.PNG"
+dest_files=[ "res://.import/idle_back.PNG-c03613f1bb305f82d9aa4fe2a6b7af9b.stex" ]
 
 [params]
 

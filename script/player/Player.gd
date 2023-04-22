@@ -4,7 +4,7 @@ extends KinematicBody2D
 export var speed := 200.0
 var velocity := Vector2()
 
-enum { STATE_IDLE, STATE_WALKING, STATE_ATTACK, STATE_HURT, STATE_DIE, STATE_BLOCKED, STATE_NULL }
+enum { STATE_IDLE, STATE_WALKING, STATE_ATTACK, STATE_HURT, STATE_DIE, STATE_BLOCKED }
 
 onready var anims = $Anim
 
@@ -46,15 +46,12 @@ func _physics_process(delta: float) -> void:
 		STATE_ATTACK:
 			_update_facing()
 			new_anim = "attack_" + facing
-			state = STATE_NULL
 		STATE_HURT:
 			pass
 #			anim = "Hurt"
 		STATE_DIE:
 			new_anim = "Die"
 		STATE_BLOCKED:
-			pass
-		STATE_NULL:
 			pass
 			
 

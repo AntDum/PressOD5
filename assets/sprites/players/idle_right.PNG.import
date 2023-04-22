@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/walk_left_1.PNG-4044d0e592005e58ebfe0ed2afb887d7.stex"
+path="res://.import/idle_right.PNG-77af82fca11f2424000e42664ebad11b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemy/walk/walk_left_1.PNG"
-dest_files=[ "res://.import/walk_left_1.PNG-4044d0e592005e58ebfe0ed2afb887d7.stex" ]
+source_file="res://assets/sprites/players/idle_right.PNG"
+dest_files=[ "res://.import/idle_right.PNG-77af82fca11f2424000e42664ebad11b.stex" ]
 
 [params]
 

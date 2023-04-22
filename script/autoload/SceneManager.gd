@@ -11,5 +11,6 @@ func change_scene(to: String) -> void:
 	if current_scene.has_signal("change_scene"):
 		current_scene.connect("change_scene", self, "change_scene", [], CONNECT_DEFERRED)
 
+
 func _ready() -> void:
 	call_deferred("change_scene", "res://scene/menu/Menu.tscn") 

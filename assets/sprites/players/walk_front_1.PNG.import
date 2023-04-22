@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/walk_left_2.PNG-8ba9ff56f8f4a42a0c054960e23a7af6.stex"
+path="res://.import/walk_front_1.PNG-9b4e5fac7857aa0917e4f94bee2a825b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemy/walk/walk_left_2.PNG"
-dest_files=[ "res://.import/walk_left_2.PNG-8ba9ff56f8f4a42a0c054960e23a7af6.stex" ]
+source_file="res://assets/sprites/players/walk_front_1.PNG"
+dest_files=[ "res://.import/walk_front_1.PNG-9b4e5fac7857aa0917e4f94bee2a825b.stex" ]
 
 [params]
 
