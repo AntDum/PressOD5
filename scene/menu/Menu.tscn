@@ -49,7 +49,8 @@ margin_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
-text = "Bye"
+text = "Bye mon frère"
 flat = true
 
 [connection signal="pressed" from="HBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_Quit_pressed"]
