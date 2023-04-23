@@ -1,8 +1,9 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://script/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://scene/prefabs/HurtBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scene/prefabs/HitBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sprites/players/peace/peace_front.PNG" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/players/idle/idle_left.PNG" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/players/walk/walk_right_2.PNG" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/players/attack/attack_front.PNG" type="Texture" id=7]
@@ -19,6 +20,9 @@
 [ext_resource path="res://assets/sprites/players/idle/idle_front.PNG" type="Texture" id=18]
 [ext_resource path="res://assets/sprites/players/walk/walk_left_2.PNG" type="Texture" id=19]
 [ext_resource path="res://assets/sprites/players/attack/attack_back.PNG" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/players/peace/peace_right.PNG" type="Texture" id=21]
+[ext_resource path="res://assets/sprites/players/peace/peace_left.PNG" type="Texture" id=22]
+[ext_resource path="res://assets/sprites/players/peace/peace_back.PNG" type="Texture" id=23]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 29.0
@@ -580,6 +584,148 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=24]
 resource_name = "shoot_love"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "idle"
+} ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "shoot_love_back"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 23 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "idle"
+} ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "shoot_love_front"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "idle"
+} ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "shoot_love_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 22 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "idle"
+} ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "shoot_love_right"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 21 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "idle"
+} ]
+}
 
 [sub_resource type="Animation" id=25]
 resource_name = "trapping"
@@ -697,6 +843,10 @@ anims/idle_left = SubResource( 15 )
 anims/idle_right = SubResource( 16 )
 anims/music = SubResource( 23 )
 anims/shoot_love = SubResource( 24 )
+anims/shoot_love_back = SubResource( 26 )
+anims/shoot_love_front = SubResource( 27 )
+anims/shoot_love_left = SubResource( 28 )
+anims/shoot_love_right = SubResource( 29 )
 anims/trapping = SubResource( 25 )
 anims/walk_back = SubResource( 17 )
 anims/walk_front = SubResource( 18 )
@@ -730,6 +880,8 @@ collision_mask = 8
 [node name="CollisionShape2D" parent="musicBox" index="0"]
 shape = SubResource( 22 )
 disabled = true
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

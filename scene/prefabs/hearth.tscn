@@ -43,7 +43,8 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=4]
 radius = 23.0868
 
-[node name="Hearth" type="Area2D"]
+[node name="Hearth" type="KinematicBody2D"]
+collision_layer = 0
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -63,7 +64,6 @@ collision_mask = 8
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource( 4 )
 
-[connection signal="body_entered" from="." to="." method="_on_Hearth_body_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 
 [editable path="HitBox"]

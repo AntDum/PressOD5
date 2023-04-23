@@ -13,6 +13,9 @@ onready var anims = $Anim
 onready var placeHolderTrap = $placeHolderTrap
 onready var rayCastSpell = $rayCastSpell
 
+var hearthScene = preload("res://scene/prefabs/hearth.tscn")
+var joinScene = preload("res://scene/prefabs/join.tscn")
+
 var state = STATE_IDLE
 
 var anim = ""
@@ -30,26 +33,12 @@ func _physics_process(_delta: float) -> void:
 					Input.is_action_pressed("move_up")
 				):
 					state = STATE_WALKING
-			if Input.is_action_just_pressed("action"):
-				state = STATE_START_ATTACK
-			if Input.is_action_just_pressed("sort_1"):
-				state = STATE_CAST_1
-			if Input.is_action_just_pressed("sort_2"):
-				state = STATE_CAST_2
-			if Input.is_action_just_pressed("sort_3"):
-				state = STATE_CAST_3
+			_get_action()
 			_update_facing()
 			new_anim = "idle_" + facing 
 			
 		STATE_WALKING:
-			if Input.is_action_just_pressed("action"):
-				state = STATE_START_ATTACK
-			if Input.is_action_just_pressed("sort_1"):
-				state = STATE_CAST_1
-			if Input.is_action_just_pressed("sort_2"):
-				state = STATE_CAST_2
-			if Input.is_action_just_pressed("sort_3"):
-				state = STATE_CAST_3
+			_get_action()
 			
 			var input := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 			velocity = input * speed
@@ -82,11 +71,23 @@ func _physics_process(_delta: float) -> void:
 		STATE_NULL:
 			pass
 		STATE_CAST_1:
-			state = STATE_IDLE
+			var join = joinScene.instance()
+			join.position = placeHolderTrap.position + position
+			get_parent().add_child(join)
+			new_anim = "shoot_love_" + facing
+			state = STATE_NULL
 		STATE_CAST_2:
-			state = STATE_IDLE
+			var hearth = hearthScene.instance()
+			hearth.start_pos = position
+			hearth.position = position
+			hearth.limit = position.distance_to(rayCastSpell.cast_to + position)
+			hearth.direction = position.direction_to(rayCastSpell.cast_to + position)
+			get_parent().add_child(hearth)
+			new_anim = "shoot_love_" + facing
+			state = STATE_NULL
 		STATE_CAST_3:
-			state = STATE_IDLE
+			new_anim = "shoot_love_" + facing
+			state = STATE_NULL
 			
 
 	if new_anim != anim:
@@ -114,6 +115,17 @@ func get_direction() -> Vector2:
 	
 func _ready():
 	anims.play("idle_front")
+	
+func _get_action():
+	if Input.is_action_just_pressed("action"):
+				state = STATE_START_ATTACK
+	if Input.is_action_just_pressed("sort_1") and PlayerInfo.spell_1_unlock:
+		state = STATE_CAST_1
+	if Input.is_action_just_pressed("sort_2") and PlayerInfo.spell_2_unlock:
+		state = STATE_CAST_2
+	if Input.is_action_just_pressed("sort_3") and PlayerInfo.spell_3_unlock:
+		state = STATE_CAST_3
+
 
 func _update_facing():
 	if Input.is_action_pressed("move_left"):
@@ -127,7 +139,15 @@ func _update_facing():
 	
 	var direction = velocity.normalized()
 	
-	if (direction.length() > 0.5):
-		placeHolderTrap.position = direction * spell_trap_dist
-		rayCastSpell.cast_to = direction * spell_coeur_dist
+	if (direction.length() < 0.1):
+		direction = get_direction()
+		
+	placeHolderTrap.position = direction * spell_trap_dist
+	rayCastSpell.cast_to = direction * spell_coeur_dist
 	
+
+
+func _on_HitBox_area_entered(area):
+	var enemy = area.get_parent()
+	if enemy.has_method("take_physical_damage"):
+		enemy.take_physical_damage(1)
