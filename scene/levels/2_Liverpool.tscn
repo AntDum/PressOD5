@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/sprites/terrain/terrain_atlas.png" type="Texture" id=1]
 [ext_resource path="res://scene/player/Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://scene/levels/2_Liverpool.gd" type="Script" id=8]
 [ext_resource path="res://scene/levels/Hole.gd" type="Script" id=9]
 [ext_resource path="res://assets/sprites/objects/IMG_0396.PNG" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/objects/cube.PNG" type="Texture" id=11]
+[ext_resource path="res://scene/prefabs/lever.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 70.7813, 0, 70.5938 )
@@ -311,6 +313,12 @@ extents = Vector2( 143.5, 41.5 )
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 36.5, 48.5 )
 
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 36.5, 38 )
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 36.5, 24.5 )
+
 [node name="Dungeon" type="Node"]
 script = ExtResource( 8 )
 
@@ -376,9 +384,120 @@ shape = SubResource( 25 )
 scale = Vector2( 0.0332031, 0.0351563 )
 texture = ExtResource( 10 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-unique_name_in_owner = true
-position = Vector2( 112, 518 )
+[node name="pushable3" type="KinematicBody2D" parent="."]
+position = Vector2( 867, 293 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable3"]
+shape = SubResource( 17 )
+
+[node name="HurtBox" parent="pushable3" instance=ExtResource( 3 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="pushable3/HurtBox" index="0"]
+shape = SubResource( 18 )
+
+[node name="FitBox" type="Area2D" parent="pushable3"]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable3/FitBox"]
+shape = SubResource( 25 )
+
+[node name="Sprite" type="Sprite" parent="pushable3"]
+scale = Vector2( 0.0332031, 0.0351563 )
+texture = ExtResource( 10 )
+
+[node name="pushable4" type="KinematicBody2D" parent="."]
+position = Vector2( 1269, 293 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable4"]
+shape = SubResource( 17 )
+
+[node name="HurtBox" parent="pushable4" instance=ExtResource( 3 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="pushable4/HurtBox" index="0"]
+shape = SubResource( 18 )
+
+[node name="FitBox" type="Area2D" parent="pushable4"]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable4/FitBox"]
+shape = SubResource( 25 )
+
+[node name="Sprite" type="Sprite" parent="pushable4"]
+scale = Vector2( 0.0332031, 0.0351563 )
+texture = ExtResource( 10 )
+
+[node name="pushable5" type="KinematicBody2D" parent="."]
+position = Vector2( 969, 360 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable5"]
+shape = SubResource( 17 )
+
+[node name="HurtBox" parent="pushable5" instance=ExtResource( 3 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="pushable5/HurtBox" index="0"]
+shape = SubResource( 18 )
+
+[node name="FitBox" type="Area2D" parent="pushable5"]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable5/FitBox"]
+shape = SubResource( 25 )
+
+[node name="Sprite" type="Sprite" parent="pushable5"]
+scale = Vector2( 0.0332031, 0.0351563 )
+texture = ExtResource( 10 )
+
+[node name="pushable7" type="KinematicBody2D" parent="."]
+position = Vector2( 1164, 360 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable7"]
+shape = SubResource( 17 )
+
+[node name="HurtBox" parent="pushable7" instance=ExtResource( 3 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="pushable7/HurtBox" index="0"]
+shape = SubResource( 18 )
+
+[node name="FitBox" type="Area2D" parent="pushable7"]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable7/FitBox"]
+shape = SubResource( 25 )
+
+[node name="Sprite" type="Sprite" parent="pushable7"]
+scale = Vector2( 0.0332031, 0.0351563 )
+texture = ExtResource( 10 )
+
+[node name="pushable6" type="KinematicBody2D" parent="."]
+position = Vector2( 1073, 360 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable6"]
+shape = SubResource( 17 )
+
+[node name="HurtBox" parent="pushable6" instance=ExtResource( 3 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="pushable6/HurtBox" index="0"]
+shape = SubResource( 18 )
+
+[node name="FitBox" type="Area2D" parent="pushable6"]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable6/FitBox"]
+shape = SubResource( 25 )
+
+[node name="Sprite" type="Sprite" parent="pushable6"]
+scale = Vector2( 0.0332031, 0.0351563 )
+texture = ExtResource( 10 )
 
 [node name="Hole" type="StaticBody2D" parent="."]
 collision_layer = 16
@@ -483,18 +602,131 @@ position = Vector2( -13, -624 )
 position = Vector2( 17.5, 15.5 )
 shape = SubResource( 22 )
 
+[node name="BlueDoor" parent="." instance=ExtResource( 4 )]
+position = Vector2( 246, 35 )
+
+[node name="shape" parent="BlueDoor/body" index="0"]
+position = Vector2( -8.5, 1 )
+shape = SubResource( 26 )
+
+[node name="Sprite" type="Sprite" parent="BlueDoor"]
+modulate = Color( 0, 0, 1, 1 )
+position = Vector2( -10, -12 )
+scale = Vector2( 0.0751953, 0.0634766 )
+texture = ExtResource( 11 )
+
+[node name="BlueDoor2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 793, -177 )
+
+[node name="shape" parent="BlueDoor2/body" index="0"]
+position = Vector2( -8.5, 1 )
+shape = SubResource( 26 )
+
+[node name="Sprite" type="Sprite" parent="BlueDoor2"]
+modulate = Color( 0, 0, 1, 1 )
+position = Vector2( -10, -12 )
+scale = Vector2( 0.0751953, 0.0634766 )
+texture = ExtResource( 11 )
+
+[node name="RedDoor" parent="." instance=ExtResource( 4 )]
+position = Vector2( 426, 35 )
+
+[node name="shape" parent="RedDoor/body" index="0"]
+position = Vector2( 5.5, 14.5 )
+shape = SubResource( 27 )
+
+[node name="Sprite" type="Sprite" parent="RedDoor"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 6, -12 )
+scale = Vector2( 0.0732422, 0.0648193 )
+texture = ExtResource( 11 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 112, 518 )
+
+[node name="leverRed" parent="." instance=ExtResource( 12 )]
+position = Vector2( 115, 135 )
+rotation = 3.14159
+
+[node name="Sprite" parent="leverRed" index="1"]
+modulate = Color( 1, 0, 0, 1 )
+
+[node name="leverRed2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 821, 195 )
+rotation = 3.14159
+
+[node name="Sprite" parent="leverRed2" index="1"]
+modulate = Color( 1, 0, 0, 1 )
+
+[node name="leverBlue" parent="." instance=ExtResource( 12 )]
+position = Vector2( 558, 130 )
+rotation = 6.28319
+
+[node name="Sprite" parent="leverBlue" index="1"]
+modulate = Color( 0, 0, 1, 1 )
+
+[node name="leverBlue2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1323, 195 )
+rotation = 6.28319
+
+[node name="Sprite" parent="leverBlue2" index="1"]
+modulate = Color( 0, 0, 1, 1 )
+
 [connection signal="area_entered" from="pushable/HurtBox" to="pushable" method="_on_HurtBox_area_entered"]
 [connection signal="area_entered" from="pushable/FitBox" to="pushable" method="_on_FitBox_area_entered"]
 [connection signal="area_entered" from="pushable/FitBox" to="Hole" method="_on_FitBox_area_entered"]
 [connection signal="area_entered" from="pushable2/HurtBox" to="pushable2" method="_on_HurtBox_area_entered"]
 [connection signal="area_entered" from="pushable2/FitBox" to="pushable2" method="_on_FitBox_area_entered"]
 [connection signal="area_entered" from="pushable2/FitBox" to="Hole2" method="_on_FitBox_area_entered"]
+[connection signal="area_entered" from="pushable3/HurtBox" to="pushable3" method="_on_HurtBox_area_entered"]
+[connection signal="area_entered" from="pushable3/FitBox" to="Hole2" method="_on_FitBox_area_entered"]
+[connection signal="area_entered" from="pushable3/FitBox" to="pushable3" method="_on_FitBox_area_entered"]
+[connection signal="area_entered" from="pushable4/HurtBox" to="pushable4" method="_on_HurtBox_area_entered"]
+[connection signal="area_entered" from="pushable4/FitBox" to="Hole2" method="_on_FitBox_area_entered"]
+[connection signal="area_entered" from="pushable4/FitBox" to="pushable4" method="_on_FitBox_area_entered"]
+[connection signal="area_entered" from="pushable5/HurtBox" to="pushable5" method="_on_HurtBox_area_entered"]
+[connection signal="area_entered" from="pushable5/FitBox" to="Hole2" method="_on_FitBox_area_entered"]
+[connection signal="area_entered" from="pushable5/FitBox" to="pushable5" method="_on_FitBox_area_entered"]
+[connection signal="area_entered" from="pushable7/HurtBox" to="pushable7" method="_on_HurtBox_area_entered"]
+[connection signal="area_entered" from="pushable7/FitBox" to="Hole2" method="_on_FitBox_area_entered"]
+[connection signal="area_entered" from="pushable7/FitBox" to="pushable7" method="_on_FitBox_area_entered"]
+[connection signal="area_entered" from="pushable6/HurtBox" to="pushable6" method="_on_HurtBox_area_entered"]
+[connection signal="area_entered" from="pushable6/FitBox" to="Hole2" method="_on_FitBox_area_entered"]
+[connection signal="area_entered" from="pushable6/FitBox" to="pushable6" method="_on_FitBox_area_entered"]
 [connection signal="area_entered" from="Hole/FitBox" to="Hole" method="_on_FitBox_area_entered"]
 [connection signal="area_entered" from="Hole2/FitBox" to="Hole2" method="_on_FitBox_area_entered"]
 [connection signal="arenaCleared" from="Arena" to="Arena2/door" method="_on_Arena_arenaCleared"]
 [connection signal="body_entered" from="Arena/TriggerSpawnArea" to="Arena" method="_on_TriggerSpawnArea_body_entered" flags=6]
 [connection signal="body_entered" from="Arena2/TriggerSpawnArea" to="Arena2" method="_on_TriggerSpawnArea_body_entered" flags=6]
+[connection signal="activated" from="leverRed" to="BlueDoor" method="_on_badLever_activated"]
+[connection signal="activated" from="leverRed" to="RedDoor" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverRed" to="BlueDoor2" method="_on_badLever_activated"]
+[connection signal="activated" from="leverRed2" to="BlueDoor" method="_on_badLever_activated"]
+[connection signal="activated" from="leverRed2" to="RedDoor" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverBlue" to="BlueDoor" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverBlue" to="RedDoor" method="_on_badLever_activated"]
+[connection signal="activated" from="leverBlue" to="BlueDoor2" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverBlue2" to="BlueDoor" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverBlue2" to="RedDoor" method="_on_badLever_activated"]
+[connection signal="activated" from="leverBlue2" to="BlueDoor2" method="_on_goodLever_activated"]
 
 [editable path="pushable/HurtBox"]
 [editable path="pushable2/HurtBox"]
+[editable path="pushable3/HurtBox"]
+[editable path="pushable4/HurtBox"]
+[editable path="pushable5/HurtBox"]
+[editable path="pushable7/HurtBox"]
+[editable path="pushable6/HurtBox"]
 [editable path="Arena2/door"]
+[editable path="BlueDoor"]
+[editable path="BlueDoor2"]
+[editable path="RedDoor"]
+[editable path="leverRed"]
+[editable path="leverRed/HurtBox"]
+[editable path="leverRed2"]
+[editable path="leverRed2/HurtBox"]
+[editable path="leverBlue"]
+[editable path="leverBlue/HurtBox"]
+[editable path="leverBlue2"]
+[editable path="leverBlue2/HurtBox"]
