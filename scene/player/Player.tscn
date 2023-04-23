@@ -23,7 +23,11 @@
 [ext_resource path="res://assets/sprites/players/peace/peace_right.PNG" type="Texture" id=21]
 [ext_resource path="res://assets/sprites/players/peace/peace_left.PNG" type="Texture" id=22]
 [ext_resource path="res://assets/sprites/players/peace/peace_back.PNG" type="Texture" id=23]
+<<<<<<< Updated upstream
 [ext_resource path="res://scene/autoload/Fade.tscn" type="PackedScene" id=24]
+=======
+[ext_resource path="res://assets/sounds/music.mp3" type="AudioStream" id=24]
+>>>>>>> Stashed changes
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 22.0
@@ -584,32 +588,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=24]
 resource_name = "shoot_love"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 4 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ null ],
-"method": "idle"
-} ]
-}
 
 [sub_resource type="Animation" id=26]
 resource_name = "shoot_love_back"
@@ -890,7 +868,14 @@ collision_mask = 8
 shape = SubResource( 22 )
 disabled = true
 
+[node name="AudioStreamPlayer_damage" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
+[connection signal="finished" from="AudioStreamPlayer_damage" to="." method="_on_AudioStreamPlayer_damage_finished"]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

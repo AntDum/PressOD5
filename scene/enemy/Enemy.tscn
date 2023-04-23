@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=40 format=2]
+=======
+[gd_scene load_steps=36 format=2]
+>>>>>>> Stashed changes
 
 [ext_resource path="res://script/enemy/EnemyBehaviour.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/enemy/idle/idle_right.PNG" type="Texture" id=2]
@@ -18,10 +22,14 @@
 [ext_resource path="res://assets/sprites/enemy/attack/attack_right.PNG" type="Texture" id=16]
 [ext_resource path="res://assets/sprites/enemy/attack/attack_back.PNG" type="Texture" id=17]
 [ext_resource path="res://assets/sprites/enemy/attack/attack_left.PNG" type="Texture" id=18]
+<<<<<<< Updated upstream
 [ext_resource path="res://assets/sprites/smiley/middle.PNG" type="Texture" id=19]
 [ext_resource path="res://assets/sprites/smiley/sad.PNG" type="Texture" id=20]
 [ext_resource path="res://assets/sprites/smiley/angry.PNG" type="Texture" id=21]
 [ext_resource path="res://assets/sprites/smiley/happy.PNG" type="Texture" id=22]
+=======
+[ext_resource path="res://assets/sounds/hitHurt.wav" type="AudioStream" id=19]
+>>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 23, 41 )
@@ -651,11 +659,19 @@ collision_layer = 8
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 16 )
 
+<<<<<<< Updated upstream
 [node name="angryness" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 17, -39 )
 scale = Vector2( 0.05, 0.05 )
 frames = SubResource( 17 )
+=======
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
+>>>>>>> Stashed changes
 
 [editable path="HitBox"]
 [editable path="HurtBox"]
