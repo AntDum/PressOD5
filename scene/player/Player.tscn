@@ -26,8 +26,7 @@
 [ext_resource path="res://scene/autoload/Fade.tscn" type="PackedScene" id=24]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 29.0
-height = 30.0
+height = 22.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
@@ -163,18 +162,6 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("musicBox/CollisionShape2D:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -800,12 +787,12 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=7]
-radius = 36.0
-height = 28.0
+radius = 20.0
+height = 42.0
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 21.0
-height = 48.0
+height = 0.0
 
 [sub_resource type="CircleShape2D" id=22]
 radius = 250.0
@@ -821,6 +808,8 @@ scale = Vector2( 0.17, 0.17 )
 texture = ExtResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4, 33 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -864,6 +853,7 @@ anims/walk_right = SubResource( 20 )
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2( 5, 0 )
 shape = SubResource( 7 )
 
 [node name="HitBox" parent="." instance=ExtResource( 3 )]
@@ -871,7 +861,6 @@ collision_mask = 8
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2( 47, 0 )
-rotation = 0.0
 shape = SubResource( 8 )
 disabled = true
 
@@ -887,6 +876,10 @@ collision_mask = 8
 [node name="CollisionShape2D" parent="musicBox" index="0"]
 shape = SubResource( 22 )
 disabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer_damage" type="AudioStreamPlayer" parent="."]
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 

@@ -18,7 +18,7 @@
 [ext_resource path="res://assets/sprites/enemy/attack/attack_right.PNG" type="Texture" id=16]
 [ext_resource path="res://assets/sprites/enemy/attack/attack_back.PNG" type="Texture" id=17]
 [ext_resource path="res://assets/sprites/enemy/attack/attack_left.PNG" type="Texture" id=18]
-[ext_resource path="res://assets/sprites/smiley/middle.PNG" type="Texture" id=19]
+[ext_resource path="res://assets/sounds/hitHurt.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/sprites/smiley/sad.PNG" type="Texture" id=20]
 [ext_resource path="res://assets/sprites/smiley/angry.PNG" type="Texture" id=21]
 [ext_resource path="res://assets/sprites/smiley/happy.PNG" type="Texture" id=22]
@@ -601,7 +601,7 @@ extents = Vector2( 25, 43 )
 
 [sub_resource type="SpriteFrames" id=17]
 animations = [ {
-"frames": [ ExtResource( 22 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"frames": [ ExtResource( 22 ), null, ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -656,6 +656,11 @@ visible = false
 position = Vector2( 17, -39 )
 scale = Vector2( 0.05, 0.05 )
 frames = SubResource( 17 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
 
 [editable path="HitBox"]
 [editable path="HurtBox"]

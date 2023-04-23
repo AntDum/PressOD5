@@ -13,7 +13,11 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/sprites/players/idle/idle_left.PNG"
+			"path": "res://assets/sprites/buddy_front.PNG"
+		},
+		{
+			"name": "buddy_left",
+			"path": "res://assets/sprites/buddy_left.PNG"
 		}
 	],
 	"scale": 100,

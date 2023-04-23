@@ -7,7 +7,7 @@ export var spell_coeur_dist := 275
 
 var velocity := Vector2()
 
-enum { STATE_IDLE, STATE_WALKING, STATE_START_ATTACK, STATE_ATTACK, STATE_HURT, STATE_DIE, STATE_BLOCKED, STATE_NULL, STATE_CAST_1, STATE_CAST_2, STATE_CAST_3 }
+enum  { STATE_IDLE, STATE_WALKING, STATE_START_ATTACK, STATE_ATTACK, STATE_HURT, STATE_DIE, STATE_BLOCKED, STATE_NULL, STATE_CAST_1, STATE_CAST_2, STATE_CAST_3 }
 
 onready var anims = $Anim
 onready var placeHolderTrap = $placeHolderTrap
@@ -15,6 +15,11 @@ onready var rayCastSpell = $rayCastSpell
 
 var hearthScene = preload("res://scene/prefabs/hearth.tscn")
 var joinScene = preload("res://scene/prefabs/join.tscn")
+
+var hit_sound = preload("res://assets/sounds/player_hit.wav")
+var shoot_sound = preload("res://assets/sounds/shoot_heart.wav")
+var joint_sound = preload("res://assets/sounds/place_joint.wav")
+var music_sound = preload("res://assets/sounds/music.mp3")
 
 var state = STATE_IDLE
 
@@ -75,6 +80,8 @@ func _physics_process(_delta: float) -> void:
 			join.position = placeHolderTrap.position + position
 			get_parent().add_child(join)
 			new_anim = "shoot_love_" + facing
+			$AudioStreamPlayer.set_stream(joint_sound)
+			$AudioStreamPlayer.play()
 			state = STATE_NULL
 		STATE_CAST_2:
 			var hearth = hearthScene.instance()
@@ -83,10 +90,14 @@ func _physics_process(_delta: float) -> void:
 			hearth.limit = position.distance_to(rayCastSpell.cast_to + position)
 			hearth.direction = position.direction_to(rayCastSpell.cast_to + position)
 			get_parent().add_child(hearth)
+			$AudioStreamPlayer.set_stream(shoot_sound)
+			$AudioStreamPlayer.play()
 			new_anim = "shoot_love_" + facing
 			state = STATE_NULL
 		STATE_CAST_3:
 			new_anim = "shoot_love_" + facing
+			$AudioStreamPlayer.set_stream(music_sound)
+			$AudioStreamPlayer.play()
 			state = STATE_NULL
 			
 
@@ -122,7 +133,8 @@ func _ready():
 	anims.play("idle_front")
 	$Camera2D/Fade.black()
 	yield(get_tree(), "idle_frame")
-	$Camera2D/Fade.fade_out()
+	if (state != STATE_BLOCKED):
+		$Camera2D/Fade.fade_out()
 	
 func _get_action():
 	if Input.is_action_just_pressed("action"):
@@ -159,3 +171,16 @@ func _on_HitBox_area_entered(area):
 	var enemy = area.get_parent()
 	if enemy.has_method("take_physical_damage"):
 		enemy.take_physical_damage(1)
+		
+func block():
+	state = STATE_BLOCKED
+
+
+func _on_HurtBox_area_entered(area):
+	$AudioStreamPlayer_damage.set_stream(hit_sound)
+	$AudioStreamPlayer_damage.play()
+	print("Player takes damage")
+
+
+func _on_AudioStreamPlayer_damage_finished():
+	pass # Handle death here <====

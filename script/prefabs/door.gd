@@ -8,3 +8,7 @@ func flip():
 
 func _on_lever_activated():
 	flip()
+
+
+func _on_Arena_arenaCleared():
+	flip()

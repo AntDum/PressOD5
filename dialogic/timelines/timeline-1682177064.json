@@ -55,6 +55,27 @@
 			"text": "Babylone, c'est pas cool ça man."
 		},
 		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1682176962.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "buddy_left",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 2,
+			"z_index": 0
+		},
+		{
 			"character": "character-1682176962.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -65,6 +86,12 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Tu devrais aller leur parler, man. Et par Babylone, n'oublie pas man, la violence ne mène à rien, man."
+		},
+		{
+			"character": "character-1682176962.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Tu peux y aller en utilisant Z,Q,S,D pour te deplacer, man"
 		},
 		{
 			"emit_signal": "end",

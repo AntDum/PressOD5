@@ -51,7 +51,7 @@
 			"character": "character-1682177849.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "T'es là pour ton van ? Le boss est déjà loin, il l'a amené à notre QG : le HELLFEST !!! Si t'essayes de la rejoindre, je vais devoir te dévisser la tête."
+			"text": "T'es là pour ton van, dude ? Le boss est déjà loin, il l'a amené à notre QG : le HELLFEST !!! Si t'essayes de la rejoindre, je vais devoir te dévisser la tête."
 		},
 		{
 			"emit_signal": "end",

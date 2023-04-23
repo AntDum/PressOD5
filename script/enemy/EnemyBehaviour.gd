@@ -13,6 +13,8 @@ const TRESHOLD = 1
 signal pacified
 signal dead
 
+var hitSound = preload("res://assets/sounds/hitHurt.wav")
+
 enum State {
 	HAPPY,			# Ignores the player, moves randomly around one point
 	SURROUND,		# Gets close to the player and periodically CHARGE
@@ -53,7 +55,7 @@ var time_since_target_change = change_target_every + 0.1
 
 var current_target
 
-onready var player = $"%Player"
+var player
 
 func back_to_idle():
 	anims.play("idle_front")
@@ -178,14 +180,11 @@ func take_magical_damage(amount):
 
 func take_physical_damage(amount):
 	HP -= amount
-	setAgressivity(agressivity + amount)
-	if HP <= 0:
-		emit_signal("dead")		
-		queue_free()
+	$AudioStreamPlayer.set_stream(hitSound)
+	$AudioStreamPlayer.play()
 		
 func set_player(plr):
 	player = plr
-	print_debug("Player set to ", player)
 
 func _physics_process(delta):
 	# Update time since last target change
@@ -196,7 +195,6 @@ func _physics_process(delta):
 			charge_in -= delta
 			# If time to charge and in range
 			if charge_in < 0.0 and (global_position - player.global_position).length() < CHARGE_RANGE:
-				print_debug("Attacking player")
 				setState(State.CHARGE)
 			# If time to change target
 			if time_since_target_change > change_target_every:
@@ -235,11 +233,13 @@ func _physics_process(delta):
 		anims.play(anim)
 
 func _on_PlayerEnteredArena(body):
-	print("PLAYER ENTERED FIGHT ZONE")
 	if(agressivity >= TRESHOLD):
 		setState(State.SURROUND)
 
 func _on_PlayerExitedArena(body):
-	print("PLAYER EXITED FIGHT ZONE")
 	setState(State.HAPPY)
 
+func _on_AudioStreamPlayer_finished():
+	if HP <= 0:
+		queue_free()
+		emit_signal("dead")
