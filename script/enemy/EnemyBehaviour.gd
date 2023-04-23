@@ -13,11 +13,11 @@ const TRESHOLD = 1
 signal pacified
 signal dead
 
-
 enum State {
 	HAPPY,			# Ignores the player, moves randomly around one point
 	SURROUND,		# Gets close to the player and periodically CHARGE
 	CHARGE,			# Charges towards the player, inflicting damage
+	KICK,
 }
 
 export (State) var state = State.HAPPY
@@ -46,7 +46,6 @@ var charge_every_min = 3.0
 var charge_in = 0.0
 
 
-
 # After how many time to pick a new target
 export (float) var change_target_every = 5.0
 # Current value of the timer
@@ -55,6 +54,14 @@ var time_since_target_change = change_target_every + 0.1
 var current_target
 
 var player
+
+func back_to_idle():
+	anims.play("idle_front")
+	current_target = return_to_circle()
+	anim = "idle_front"
+	new_anim = "idle_front"
+	charge_in = get_randf(charge_every_min, charge_every_max)
+	setState(State.SURROUND)
 
 # Determine state based on agressivity
 func setAgressivity(value):
@@ -171,7 +178,6 @@ func _physics_process(delta):
 			charge_in -= delta
 			# If time to charge and in range
 			if charge_in < 0.0 and (global_position - player.global_position).length() < CHARGE_RANGE:
-				charge_in = get_randf(charge_every_min, charge_every_max)
 				print_debug("Attacking player")
 				setState(State.CHARGE)
 			# If time to change target
@@ -195,9 +201,17 @@ func _physics_process(delta):
 			for i in get_slide_count():
 				var collision = get_slide_collision(i)
 				if collision.collider.name == "Player":
-					print_debug("Hit ", collision.collider.name)
-					current_target = return_to_circle()
-					setState(State.SURROUND)
+					state = State.KICK
+					# Anim
+					var walk_angle = atan2(velocity.y, velocity.x) + PI
+					if walk_angle < PI/4 or walk_angle > 7*PI/4:
+						anims.play("attack_left")
+					elif walk_angle < 3*PI/4:
+						anims.play("attack_back")
+					elif walk_angle < 5*PI/4:
+						anims.play("attack_right")
+					else:
+						anims.play("attack_front")
 	if new_anim != anim:
 		anim = new_anim
 		anims.play(anim)
