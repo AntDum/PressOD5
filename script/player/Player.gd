@@ -179,8 +179,10 @@ func block():
 func _on_HurtBox_area_entered(area):
 	$AudioStreamPlayer_damage.set_stream(hit_sound)
 	$AudioStreamPlayer_damage.play()
-	print("Player takes damage")
+	PlayerInfo.life -= 1
+	
 
 
 func _on_AudioStreamPlayer_damage_finished():
-	pass # Handle death here <====
+	if PlayerInfo.life <= 0:
+		get_parent().emit_signal("change_scene", "res://scene/menu/GameOver.tscn")
