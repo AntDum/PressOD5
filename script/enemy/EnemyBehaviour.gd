@@ -5,12 +5,13 @@
 
 extends KinematicBody2D
 
-export (float) var SPEED = 50
-export (float) var ACCEL = 50
-export (float) var CHARGE_RANGE = 70
+export (float) var SPEED = 100
+export (float) var ACCEL = 500
+export (float) var CHARGE_RANGE = 210
 const TRESHOLD = 1
 
 signal pacified
+signal dead
 
 
 enum State {
@@ -21,6 +22,10 @@ enum State {
 
 export (State) var state = State.HAPPY
 
+onready var anims = $anims
+var anim = ""
+var new_anim = ""
+
 var randGen = RandomNumberGenerator.new()
 
 func get_randf(from, to):
@@ -28,6 +33,7 @@ func get_randf(from, to):
 	return from + (to - from)*randGen.randf()
 
 var agressivity = 0.0
+var HP = 3
 var velocity = Vector2.ZERO
 
 # Point around which to walk when in happy state
@@ -79,30 +85,58 @@ func move(target, dt):
 	# Stop moving if near target to avoid feedback loops and anihilation of the human race in a giant fireball
 	if diff.length() < 10:
 		velocity = Vector2.ZERO
+		new_anim = "idle_front"
 		return
 	var dir = diff.normalized()
 	# Kick
 	velocity += ACCEL * dt/2 * dir
+	
+	# Anim
+	var walk_angle = atan2(velocity.y, velocity.x) + PI
+	if walk_angle < PI/4 or walk_angle > 7*PI/4:
+		new_anim = "walk_left"
+	elif walk_angle < 3*PI/4:
+		new_anim = "walk_back"
+	elif walk_angle < 5*PI/4:
+		new_anim = "walk_right"
+	else:
+		new_anim = "walk_front"
+	
 	# Cap
 	var vnorm = velocity.length()
 	if vnorm > SPEED:
 		velocity *= SPEED/vnorm
 	# Drift
-	global_position += velocity * dt
+	move_and_slide(velocity)
 	# Kick
 	velocity += ACCEL * dt/2 * dir
+	if new_anim != anim:
+		anim = new_anim
+		anims.play(anim)
 
 func pick_spot_around_player():
 	var center = player.global_position
-	var distance = 60
+	var distance = 200
+	var angle_with_player = atan2(global_position.y - center.y, global_position.x - center.x)
 
-	var angle = get_randf(0, 2*PI)
+	var angle = get_randf(angle_with_player-PI/3, angle_with_player+PI/3)
 
 	var x = center.x + cos(angle) * distance
 	var y = center.y + sin(angle) * distance
 
 	return Vector2(x, y)
 
+func return_to_circle():
+	var center = player.global_position
+	var distance = 200
+	var angle_with_player = atan2(global_position.y - center.y, global_position.x - center.x)
+
+	var angle = angle_with_player
+
+	var x = center.x + cos(angle) * distance
+	var y = center.y + sin(angle) * distance
+
+	return Vector2(x, y)
 
 func pick_happy_spot(angle):
 	var distance = 40
@@ -114,7 +148,19 @@ func pick_happy_spot(angle):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	setState(State.HAPPY) # Replace with function body.
+
+func take_magical_damage(amount):
+	agressivity -= amount
+	if agressivity < TRESHOLD:
+		emit_signal("pacified")
+		setState(State.HAPPY)
+
+func take_physical_damage(amount):
+	HP -= amount
+	if HP <= 0:
+		emit_signal("dead")
 
 func _physics_process(delta):
 	# Update time since last target change
@@ -126,6 +172,7 @@ func _physics_process(delta):
 			# If time to charge and in range
 			if charge_in < 0.0 and (global_position - player.global_position).length() < CHARGE_RANGE:
 				charge_in = get_randf(charge_every_min, charge_every_max)
+				print_debug("Attacking player")
 				setState(State.CHARGE)
 			# If time to change target
 			if time_since_target_change > change_target_every:
@@ -143,8 +190,17 @@ func _physics_process(delta):
 			current_target = pick_happy_spot(happy_angle)
 			move(current_target, delta)
 		State.CHARGE:
-			print_debug("ATTACKING")
-			setState(State.SURROUND)
+			current_target = player.global_position
+			move(current_target, delta)
+			for i in get_slide_count():
+				var collision = get_slide_collision(i)
+				if collision.collider.name == "Player":
+					print_debug("Hit ", collision.collider.name)
+					current_target = return_to_circle()
+					setState(State.SURROUND)
+	if new_anim != anim:
+		anim = new_anim
+		anims.play(anim)
 
 func _on_PlayerEnteredArena(body):
 	print("PLAYER ENTERED FIGHT ZONE")

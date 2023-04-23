@@ -24,7 +24,7 @@ collision_mask = 0
 shape = SubResource( 1 )
 
 [node name="FightArea" type="Area2D" parent="."]
-position = Vector2( 0, 284 )
+position = Vector2( 2, 65 )
 collision_layer = 0
 collision_mask = 2
 
@@ -32,7 +32,7 @@ collision_mask = 2
 shape = SubResource( 2 )
 
 [node name="TriggerSpawnArea" type="Area2D" parent="."]
-position = Vector2( 2, 593 )
+position = Vector2( 2, 149 )
 collision_layer = 0
 collision_mask = 2
 

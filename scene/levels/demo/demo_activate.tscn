@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scene/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/prefabs/door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/enemy/lever.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50, 52.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 55.5, 69 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[sub_resource type="RectangleShape2D" id=4]
+
+[sub_resource type="RectangleShape2D" id=5]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -16, -37 )
+
+[node name="door" parent="." instance=ExtResource( 2 )]
+position = Vector2( -180, 127 )
+
+[node name="shape" parent="door/body" index="0"]
+position = Vector2( 0, -5.5 )
+shape = SubResource( 1 )
+
+[node name="door2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -340, -38 )
+
+[node name="shape" parent="door2/body" index="0"]
+position = Vector2( 2.5, -8 )
+shape = SubResource( 2 )
+
+[node name="lever" parent="." instance=ExtResource( 3 )]
+position = Vector2( 153, 120 )
+
+[node name="CollisionShape2D" parent="lever/HurtBox" index="0"]
+shape = SubResource( 3 )
+
+[node name="lever2" parent="." instance=ExtResource( 3 )]
+position = Vector2( -137, -198 )
+
+[node name="CollisionShape2D" parent="lever2/HurtBox" index="0"]
+shape = SubResource( 4 )
+
+[node name="lever3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 58, -85 )
+
+[node name="CollisionShape2D" parent="lever3/HurtBox" index="0"]
+shape = SubResource( 5 )
+
+[connection signal="activated" from="lever" to="door" method="flip"]
+[connection signal="activated" from="lever2" to="door2" method="flip"]
+[connection signal="activated" from="lever3" to="door" method="flip"]
+[connection signal="activated" from="lever3" to="door2" method="flip"]
+
+[editable path="door"]
+[editable path="door2"]
+[editable path="lever"]
+[editable path="lever/HurtBox"]
+[editable path="lever2"]
+[editable path="lever2/HurtBox"]
+[editable path="lever3"]
+[editable path="lever3/HurtBox"]
