@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://script/levels/1_Woodstock.gd" type="Script" id=1]
 [ext_resource path="res://scene/prefabs/dialog_trigger.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/sprites/terrain/terrain_atlas.png" type="Texture" id=4]
 [ext_resource path="res://scene/enemy/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sprites/terrain/fences.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/objects/IMG_0433.PNG" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/buddy_left.PNG" type="Texture" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 18.2635, 0.0940971, 18.875, 26.875, 0, 26.875 )
@@ -189,6 +191,318 @@ points = PoolVector2Array( 14.084, 0, 18.188, 0, 18.188, 26.44, 14.084, 26.44 )
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 92, 32 )
 
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ele_introp/Jimmy:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player/Body:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ele_introp/Van:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 23, -103 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ele_introp/Van:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("ele_introp/Van:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 23, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("ele_introp/Van:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -103, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ele_introp/Van:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "intro"
+length = 2.2
+tracks/0/type = "method"
+tracks/0/path = NodePath("Player")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "block"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player/Camera2D/Fade:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.3, 2.2 ),
+"transitions": PoolRealArray( 1, 3.24901, 2.37841, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0.423529 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0.423529 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ele_introp/Jimmy:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Player/Body:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 2.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_launch_dialog_steal"
+} ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player/Body:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ele_introp/Jimmy:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ele_introp/Van:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Player/Camera2D/Fade:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.001, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_launch_intro"
+} ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "steal"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ele_introp/Van:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 25, -0.26, -10.5499, 0.3, 20.4281, 57.6, -0.6, -1.28769, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2.1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ele_introp/Van:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 23, -0.25, 0, 0.25, 0, -55, -0.2, 42.4256, 0.2, -33.4077, -163, -0.12, 30.4256, 0.18, -42.9077, -376, -0.17, 52.5923, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2.1, 3.4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("ele_introp/Van:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -103, -0.25, 0, 0.25, 0, -161, -0.17, 35.9256, 0.23, -59.1144, -352, -0.27, 54.1256, 0.13, -48.1144, -726, -0.27, 75.3256, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2.1, 3.4 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ele_introp/Van:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Player/Camera2D/Fade:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.9, 4.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.423529 ), Color( 0, 0, 0, 0.423529 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 4.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_play_intro"
+} ]
+}
+
 [node name="Dungeon" type="Node"]
 script = ExtResource( 1 )
 
@@ -203,13 +517,26 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 show_collision = true
 format = 1
-tile_data = PoolIntArray( -1769469, 1, 131072, -1769468, 1, 131073, -1769467, 1, 131074, -1703933, 1, 196608, -1703932, 1, 196609, -1703931, 1, 196610, -1703922, 3, 0, -1703915, 3, 0, -1572868, 3, 0, -1572865, 2, 3, -1638400, 2, 65536, -1638399, 2, 65536, -1638398, 2, 65537, -1638397, 1, 196608, -1638396, 1, 196609, -1638395, 1, 196610, -1638394, 2, 65538, -1638393, 2, 65536, -1638392, 2, 65536, -1638391, 2, 2, -1638389, 4, 0, -1507329, 2, 65539, -1572861, 1, 196608, -1572860, 1, 196609, -1572859, 1, 196610, -1572855, 2, 65539, -1441802, 3, 0, -1441793, 2, 65539, -1507325, 1, 196608, -1507324, 1, 327680, -1507323, 1, 196610, -1507319, 2, 65539, -1376257, 2, 65539, -1441789, 1, 196608, -1441788, 1, 327682, -1441787, 1, 196610, -1441783, 2, 65539, -1441781, 3, 0, -1310741, 3, 0, -1310721, 2, 65539, -1376253, 1, 196608, -1376252, 1, 327681, -1376251, 1, 196610, -1376247, 2, 65539, -1376239, 3, 0, -1245188, 4, 0, -1245185, 2, 65539, -1310718, 1, 131072, -1310717, 1, 65538, -1310716, 1, 1, -1310715, 1, 262146, -1310711, 2, 65539, -1310706, 4, 0, -1310697, 3, 0, -1179649, 2, 1, -1245184, 2, 2, -1245183, 1, 131072, -1245182, 1, 65538, -1245181, 1, 196609, -1245180, 1, 196610, -1245177, 2, 3, -1245176, 2, 65536, -1245175, 2, 0, -1114127, 3, 0, -1114115, 3, 0, -1179648, 2, 65539, -1179647, 1, 196608, -1179646, 1, 196609, -1179645, 1, 196609, -1179644, 1, 196610, -1179641, 2, 65539, -1048604, 3, 0, -1048586, 4, 0, -1114112, 2, 65539, -1114111, 1, 196608, -1114110, 1, 196609, -1114109, 1, 1, -1114108, 1, 262146, -1114105, 2, 65539, -1114103, 4, 0, -983057, 4, 0, -983047, 4, 0, -1048576, 2, 65539, -1048575, 1, 196608, -1048574, 1, 196609, -1048573, 1, 196610, -1048572, 2, 3, -1048571, 2, 65536, -1048570, 2, 65536, -1048569, 2, 0, -1048562, 3, 0, -1048558, 4, 0, -917525, 3, 0, -983040, 2, 65539, -983039, 1, 196608, -983038, 1, 327682, -983037, 1, 196610, -983036, 2, 65539, -983019, 3, 0, -851973, 2, 3, -851972, 2, 65536, -851971, 2, 65536, -851970, 2, 65536, -851969, 2, 65536, -917504, 2, 0, -917503, 1, 196608, -917502, 1, 327680, -917501, 1, 196610, -917500, 2, 1, -917499, 2, 65536, -917498, 2, 65536, -917497, 2, 65536, -917496, 2, 65536, -917495, 2, 65536, -917494, 2, 65536, -917493, 2, 2, -786440, 2, 3, -786439, 2, 65536, -786438, 2, 65536, -786437, 2, 0, -851967, 1, 196608, -851966, 1, 327681, -851965, 1, 196610, -851957, 2, 65539, -720912, 2, 3, -720911, 2, 65536, -720910, 2, 65536, -720909, 2, 65536, -720908, 2, 65536, -720907, 2, 65536, -720906, 2, 65536, -720905, 2, 65536, -720904, 2, 0, -786431, 1, 196608, -786430, 1, 327680, -786429, 1, 196610, -786421, 2, 65539, -786415, 3, 0, -655376, 2, 65539, -720896, 1, 131072, -720895, 1, 65538, -720894, 1, 327680, -720893, 1, 196610, -720885, 2, 1, -720884, 2, 65536, -720883, 2, 65536, -720882, 2, 65536, -720881, 2, 2, -589843, 4, 0, -589840, 2, 65539, -655360, 1, 196608, -655359, 1, 196609, -655358, 1, 1, -655357, 1, 262146, -655345, 2, 65539, -524312, 3, 0, -524304, 2, 65539, -589824, 1, 196608, -589823, 1, 196609, -589822, 1, 196610, -589809, 2, 65539, -458768, 2, 65539, -458753, 1, 131072, -524288, 1, 65538, -524287, 1, 196609, -524286, 1, 65537, -524285, 1, 131074, -524273, 2, 65539, -524268, 3, 0, -393232, 2, 65539, -393221, 1, 131072, -393220, 1, 131073, -393219, 1, 131073, -393218, 1, 131073, -393217, 1, 65538, -458752, 1, 327682, -458751, 1, 327680, -458750, 1, 327680, -458749, 1, 65537, -458748, 1, 131073, -458747, 1, 131073, -458746, 1, 131074, -458737, 2, 1, -458736, 2, 65536, -458735, 2, 65536, -458734, 2, 2, -458727, 3, 0, -327710, 3, 0, -327696, 2, 65539, -327685, 1, 196608, -327684, 1, 1, -327683, 1, 262145, -327682, 1, 262145, -327681, 1, 262145, -393216, 1, 262145, -393215, 1, 262145, -393214, 1, 262145, -393213, 1, 262145, -393212, 1, 262145, -393211, 1, 2, -393210, 1, 196610, -393198, 2, 65539, -262167, 4, 0, -262160, 2, 65539, -262149, 1, 196608, -262148, 1, 196610, -327675, 1, 196608, -327674, 1, 196610, -327662, 2, 65539, -327660, 4, 0, -196624, 2, 65539, -196613, 1, 262144, -196612, 1, 262146, -262139, 1, 196608, -262138, 1, 196610, -262126, 2, 65539, -131088, 2, 65539, -196603, 1, 196608, -196602, 1, 196610, -196590, 2, 65539, -65558, 3, 0, -65552, 2, 65539, -131067, 1, 196608, -131066, 1, 196610, -131054, 2, 65539, -131050, 3, 0, -16, 2, 65539, -5, 1, 131072, -4, 1, 131073, -3, 1, 131073, -2, 1, 131073, -1, 1, 131073, -65536, 1, 131073, -65535, 1, 131073, -65534, 1, 131073, -65533, 1, 131073, -65532, 1, 131073, -65531, 1, 65538, -65530, 1, 196610, -65518, 2, 65539, 65520, 2, 65539, 65531, 1, 196608, 65532, 1, 327681, 65533, 1, 327682, 65534, 1, 327680, 65535, 1, 196609, 0, 1, 327682, 1, 1, 196609, 2, 1, 196609, 3, 1, 327681, 4, 1, 196609, 5, 1, 1, 6, 1, 262146, 18, 2, 65539, 131056, 2, 65539, 131067, 1, 196608, 131068, 1, 327681, 131069, 1, 196609, 131070, 1, 196609, 131071, 1, 196609, 65536, 1, 327682, 65537, 1, 327680, 65538, 1, 196609, 65539, 1, 327682, 65540, 1, 1, 65541, 1, 262146, 65554, 2, 65539, 65555, 4, 0, 196579, 3, 0, 196592, 2, 65539, 196603, 1, 262144, 196604, 1, 262145, 196605, 1, 262145, 196606, 1, 262145, 196607, 1, 262145, 131072, 1, 262145, 131073, 1, 262145, 131074, 1, 262145, 131075, 1, 262145, 131076, 1, 262146, 131090, 2, 65539, 131099, 3, 0, 262128, 2, 1, 262129, 2, 2, 196626, 2, 65539, 327659, 4, 0, 327665, 2, 1, 327666, 2, 2, 262162, 2, 65539, 262164, 3, 0, 393188, 4, 0, 393197, 3, 0, 393202, 2, 65539, 327698, 2, 65539, 458738, 2, 1, 458739, 2, 65536, 458740, 2, 2, 393223, 2, 3, 393224, 2, 65536, 393225, 2, 65536, 393226, 2, 65536, 393227, 2, 65536, 393228, 2, 65536, 393229, 2, 65536, 393230, 2, 65536, 393231, 2, 65536, 393232, 2, 65536, 393233, 2, 65536, 393234, 2, 0, 524276, 2, 1, 524277, 2, 65536, 524278, 2, 65536, 524279, 2, 2, 458759, 2, 65539, 458768, 3, 0, 589811, 4, 0, 589815, 2, 1, 589816, 2, 65536, 589817, 2, 65536, 589818, 2, 65536, 589819, 2, 65536, 589820, 2, 65536, 589821, 2, 65536, 589822, 2, 65536, 589823, 2, 65536, 524288, 2, 65536, 524289, 2, 65536, 524290, 2, 65536, 524291, 2, 65536, 524292, 2, 65536, 524293, 2, 65536, 524294, 2, 65536, 524295, 2, 0, 524298, 3, 0, 655352, 3, 0, 589824, 3, 0, 589831, 4, 0, 589847, 3, 0, 786406, 3, 0, 786416, 3, 0, 851965, 4, 0, 786437, 3, 0, 786445, 3, 0 )
+tile_data = PoolIntArray( -1835005, 2, 3, -1835004, 2, 65536, -1835003, 2, 2, -1769469, 2, 65539, -1769467, 2, 65539, -1703933, 2, 65539, -1703932, 1, 196609, -1703931, 2, 65539, -1703922, 3, 0, -1703915, 3, 0, -1572868, 3, 0, -1572865, 2, 3, -1638400, 2, 65536, -1638399, 2, 65536, -1638398, 2, 65537, -1638397, 2, 0, -1638396, 1, 196609, -1638395, 2, 1, -1638394, 2, 65537, -1638393, 2, 65536, -1638392, 2, 65536, -1638391, 2, 2, -1638389, 4, 0, -1507329, 2, 65539, -1572861, 1, 196608, -1572860, 1, 196609, -1572859, 1, 196610, -1572855, 2, 65539, -1441802, 3, 0, -1441793, 2, 65539, -1507325, 1, 196608, -1507324, 1, 327680, -1507323, 1, 196610, -1507319, 2, 65539, -1376257, 2, 65539, -1441789, 1, 196608, -1441788, 1, 327682, -1441787, 1, 196610, -1441783, 2, 65539, -1441781, 3, 0, -1310741, 3, 0, -1310721, 2, 65539, -1376253, 1, 196608, -1376252, 1, 327681, -1376251, 1, 196610, -1376247, 2, 65539, -1376239, 3, 0, -1245188, 4, 0, -1245185, 2, 65539, -1310718, 1, 131072, -1310717, 1, 65538, -1310716, 1, 1, -1310715, 1, 262146, -1310711, 2, 65539, -1310706, 4, 0, -1310697, 3, 0, -1179649, 2, 1, -1245184, 2, 2, -1245183, 1, 131072, -1245182, 1, 65538, -1245181, 1, 196609, -1245180, 1, 196610, -1245177, 2, 3, -1245176, 2, 65536, -1245175, 2, 0, -1114127, 3, 0, -1114115, 3, 0, -1179648, 2, 65539, -1179647, 1, 196608, -1179646, 1, 196609, -1179645, 1, 196609, -1179644, 1, 196610, -1179641, 2, 65539, -1048604, 3, 0, -1048586, 4, 0, -1114112, 2, 65539, -1114111, 1, 196608, -1114110, 1, 196609, -1114109, 1, 1, -1114108, 1, 262146, -1114105, 2, 65539, -1114103, 4, 0, -983057, 4, 0, -983047, 4, 0, -1048576, 2, 65539, -1048575, 1, 196608, -1048574, 1, 196609, -1048573, 1, 196610, -1048572, 2, 3, -1048571, 2, 65536, -1048570, 2, 65536, -1048569, 2, 0, -1048562, 3, 0, -1048558, 4, 0, -917525, 3, 0, -983040, 2, 65539, -983039, 1, 196608, -983038, 1, 327682, -983037, 1, 196610, -983036, 2, 65539, -983019, 3, 0, -851973, 2, 3, -851972, 2, 65536, -851971, 2, 65536, -851970, 2, 65536, -851969, 2, 65536, -917504, 2, 0, -917503, 1, 196608, -917502, 1, 327680, -917501, 1, 196610, -917500, 2, 1, -917499, 2, 65536, -917498, 2, 65536, -917497, 2, 65536, -917496, 2, 65536, -917495, 2, 65536, -917494, 2, 65536, -917493, 2, 2, -786440, 2, 3, -786439, 2, 65536, -786438, 2, 65536, -786437, 2, 0, -851967, 1, 196608, -851966, 1, 327681, -851965, 1, 196610, -851957, 2, 65539, -720912, 2, 3, -720911, 2, 65536, -720910, 2, 65536, -720909, 2, 65536, -720908, 2, 65536, -720907, 2, 65536, -720906, 2, 65536, -720905, 2, 65536, -720904, 2, 0, -786431, 1, 196608, -786430, 1, 327680, -786429, 1, 196610, -786421, 2, 65539, -786415, 3, 0, -655376, 2, 65539, -720896, 1, 131072, -720895, 1, 65538, -720894, 1, 327680, -720893, 1, 196610, -720885, 2, 1, -720884, 2, 65536, -720883, 2, 65536, -720882, 2, 65536, -720881, 2, 2, -589843, 4, 0, -589840, 2, 65539, -655360, 1, 196608, -655359, 1, 196609, -655358, 1, 1, -655357, 1, 262146, -655345, 2, 65539, -524312, 3, 0, -524304, 2, 65539, -589824, 1, 196608, -589823, 1, 196609, -589822, 1, 196610, -589809, 2, 65539, -458768, 2, 65539, -458753, 1, 131072, -524288, 1, 65538, -524287, 1, 196609, -524286, 1, 65537, -524285, 1, 131074, -524273, 2, 65539, -524268, 3, 0, -393232, 2, 65539, -393221, 1, 131072, -393220, 1, 131073, -393219, 1, 131073, -393218, 1, 131073, -393217, 1, 65538, -458752, 1, 327682, -458751, 1, 327680, -458750, 1, 327680, -458749, 1, 65537, -458748, 1, 131073, -458747, 1, 131073, -458746, 1, 131074, -458737, 2, 1, -458736, 2, 65536, -458735, 2, 65536, -458734, 2, 2, -458727, 3, 0, -327710, 3, 0, -327696, 2, 65539, -327685, 1, 196608, -327684, 1, 1, -327683, 1, 262145, -327682, 1, 262145, -327681, 1, 262145, -393216, 1, 262145, -393215, 1, 262145, -393214, 1, 262145, -393213, 1, 262145, -393212, 1, 262145, -393211, 1, 2, -393210, 1, 196610, -393198, 2, 65539, -262167, 4, 0, -262160, 2, 65539, -262149, 1, 196608, -262148, 1, 196610, -327675, 1, 196608, -327674, 1, 196610, -327662, 2, 65539, -327660, 4, 0, -196624, 2, 65539, -196613, 1, 262144, -196612, 1, 262146, -262139, 1, 196608, -262138, 1, 196610, -262126, 2, 65539, -131088, 2, 65539, -196603, 1, 196608, -196602, 1, 196610, -196590, 2, 65539, -65558, 3, 0, -65552, 2, 65539, -131067, 1, 196608, -131066, 1, 196610, -131054, 2, 65539, -131050, 3, 0, -16, 2, 65539, -5, 1, 131072, -4, 1, 131073, -3, 1, 131073, -2, 1, 131073, -1, 1, 131073, -65536, 1, 131073, -65535, 1, 131073, -65534, 1, 131073, -65533, 1, 131073, -65532, 1, 131073, -65531, 1, 65538, -65530, 1, 196610, -65518, 2, 65539, 65520, 2, 65539, 65531, 1, 196608, 65532, 1, 327681, 65533, 1, 327682, 65534, 1, 327680, 65535, 1, 196609, 0, 1, 327682, 1, 1, 196609, 2, 1, 196609, 3, 1, 327681, 4, 1, 196609, 5, 1, 1, 6, 1, 262146, 18, 2, 65539, 131056, 2, 65539, 131067, 1, 196608, 131068, 1, 327681, 131069, 1, 196609, 131070, 1, 196609, 131071, 1, 196609, 65536, 1, 327682, 65537, 1, 327680, 65538, 1, 196609, 65539, 1, 327682, 65540, 1, 1, 65541, 1, 262146, 65554, 2, 65539, 65555, 4, 0, 196579, 3, 0, 196592, 2, 65539, 196603, 1, 262144, 196604, 1, 262145, 196605, 1, 262145, 196606, 1, 262145, 196607, 1, 262145, 131072, 1, 262145, 131073, 1, 262145, 131074, 1, 262145, 131075, 1, 262145, 131076, 1, 262146, 131090, 2, 65539, 131099, 3, 0, 262128, 2, 1, 262129, 2, 2, 196626, 2, 65539, 327659, 4, 0, 327665, 2, 1, 327666, 2, 2, 262162, 2, 65539, 262164, 3, 0, 393188, 4, 0, 393197, 3, 0, 393202, 2, 65539, 327698, 2, 65539, 458738, 2, 1, 458739, 2, 65536, 458740, 2, 2, 393223, 2, 3, 393224, 2, 65536, 393225, 2, 65536, 393226, 2, 65536, 393227, 2, 65536, 393228, 2, 65536, 393229, 2, 65536, 393230, 2, 65536, 393231, 2, 65536, 393232, 2, 65536, 393233, 2, 65536, 393234, 2, 0, 524276, 2, 1, 524277, 2, 65536, 524278, 2, 65536, 524279, 2, 2, 458759, 2, 65539, 458768, 3, 0, 589811, 4, 0, 589815, 2, 1, 589816, 2, 65536, 589817, 2, 65536, 589818, 2, 65536, 589819, 2, 65536, 589820, 2, 65536, 589821, 2, 65536, 589822, 2, 65536, 589823, 2, 65536, 524288, 2, 65536, 524289, 2, 65536, 524290, 2, 65536, 524291, 2, 65536, 524292, 2, 65536, 524293, 2, 65536, 524294, 2, 65536, 524295, 2, 0, 524298, 3, 0, 655352, 3, 0, 589824, 3, 0, 589831, 4, 0, 589847, 3, 0, 786406, 3, 0, 786416, 3, 0, 851965, 4, 0, 786437, 3, 0, 786445, 3, 0 )
 __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="ele_introp" type="Node2D" parent="."]
+
+[node name="Van" type="Sprite" parent="ele_introp"]
+position = Vector2( 23, -103 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 7 )
+
+[node name="Jimmy" type="Sprite" parent="ele_introp"]
+position = Vector2( 231, -98 )
+scale = Vector2( 0.17, 0.17 )
+texture = ExtResource( 8 )
+
 [node name="Player" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
+state = 6
 
 [node name="Camera2D" parent="Player" index="2"]
 limit_left = -1047
@@ -231,6 +558,12 @@ timeline = "metal_interaction_1"
 [node name="CollisionShape2D" parent="dialogue_trigger" index="0"]
 position = Vector2( 43, -57 )
 shape = SubResource( 11 )
+
+[node name="anims" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 13 )
+anims/intro = SubResource( 12 )
+anims/start = SubResource( 15 )
+anims/steal = SubResource( 14 )
 
 [editable path="Player"]
 [editable path="Player/HurtBox"]

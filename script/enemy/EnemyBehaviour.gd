@@ -55,7 +55,7 @@ var time_since_target_change = change_target_every + 0.1
 
 var current_target
 
-onready var player = $"%Player"
+var player
 
 func back_to_idle():
 	anims.play("idle_front")
