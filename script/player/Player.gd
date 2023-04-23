@@ -95,6 +95,11 @@ func _physics_process(_delta: float) -> void:
 		anims.play(anim)
 
 func idle(_n = null):
+	if state != STATE_BLOCKED:
+		state = STATE_IDLE
+		velocity = Vector2.ZERO
+
+func force_idle(_n = null):
 	state = STATE_IDLE
 	velocity = Vector2.ZERO
 	
@@ -115,6 +120,9 @@ func get_direction() -> Vector2:
 	
 func _ready():
 	anims.play("idle_front")
+	$Camera2D/Fade.black()
+	yield(get_tree(), "idle_frame")
+	$Camera2D/Fade.fade_out()
 	
 func _get_action():
 	if Input.is_action_just_pressed("action"):

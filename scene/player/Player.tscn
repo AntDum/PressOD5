@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://script/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://scene/prefabs/HurtBox.tscn" type="PackedScene" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/sprites/players/peace/peace_right.PNG" type="Texture" id=21]
 [ext_resource path="res://assets/sprites/players/peace/peace_left.PNG" type="Texture" id=22]
 [ext_resource path="res://assets/sprites/players/peace/peace_back.PNG" type="Texture" id=23]
+[ext_resource path="res://scene/autoload/Fade.tscn" type="PackedScene" id=24]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 29.0
@@ -826,6 +827,12 @@ shape = SubResource( 1 )
 current = true
 smoothing_enabled = true
 smoothing_speed = 4.0
+
+[node name="Fade" parent="Camera2D" instance=ExtResource( 24 )]
+margin_left = -559.0
+margin_top = -323.0
+margin_right = 556.0
+margin_bottom = 346.0
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 3 )

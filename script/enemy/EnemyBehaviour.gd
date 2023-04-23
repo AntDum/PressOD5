@@ -53,7 +53,7 @@ var time_since_target_change = change_target_every + 0.1
 
 var current_target
 
-var player
+onready var player = $"%Player"
 
 func back_to_idle():
 	anims.play("idle_front")
@@ -79,12 +79,23 @@ func setState(newState):
 			happy_center = global_position
 			current_target = pick_happy_spot(get_randf(0.0, 1.0))
 			time_since_target_change = 0
+			show_angryness(0)
 		State.SURROUND:
 			charge_in = get_randf(charge_every_min, charge_every_max)
 			current_target = pick_spot_around_player()
 			time_since_target_change = 0
+			show_angryness(4)
 		State.CHARGE:
 			pass
+
+func show_angryness(angry_num):
+	var tween = create_tween()
+	tween.tween_property($angryness, "visible", true, 0)
+	tween.tween_property($angryness, "frame", angry_num, 1)
+	tween.tween_interval(5)
+	tween.tween_property($angryness, "visible", false, 0)
+	
+	
 
 # Moves towards target, dt is the time step, leapfrog order 2 (kdk) integration
 func move(target, dt):
@@ -158,7 +169,7 @@ func _ready():
 	setState(State.HAPPY) # Replace with function body.
 
 func take_magical_damage(amount):
-	agressivity -= amount
+	setAgressivity(agressivity - amount)
 	if agressivity < 0:
 		agressivity = 0
 	if agressivity < TRESHOLD:
@@ -167,9 +178,10 @@ func take_magical_damage(amount):
 
 func take_physical_damage(amount):
 	HP -= amount
+	setAgressivity(agressivity + amount)
 	if HP <= 0:
+		emit_signal("dead")		
 		queue_free()
-		emit_signal("dead")
 		
 func set_player(plr):
 	player = plr
@@ -231,7 +243,3 @@ func _on_PlayerExitedArena(body):
 	print("PLAYER EXITED FIGHT ZONE")
 	setState(State.HAPPY)
 
-
-
-func _on_HurtBox_area_entered(area):
-	take_physical_damage(1)
