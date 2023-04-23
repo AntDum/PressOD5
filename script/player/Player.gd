@@ -138,7 +138,7 @@ func _ready():
 	
 func _get_action():
 	if Input.is_action_just_pressed("action"):
-				state = STATE_START_ATTACK
+		state = STATE_START_ATTACK
 	if Input.is_action_just_pressed("sort_1") and PlayerInfo.spell_1_unlock:
 		state = STATE_CAST_1
 	if Input.is_action_just_pressed("sort_2") and PlayerInfo.spell_2_unlock:

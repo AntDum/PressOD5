@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://script/levels/1_Woodstock.gd" type="Script" id=1]
 [ext_resource path="res://scene/prefabs/dialog_trigger.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/sprites/terrain/fences.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/objects/IMG_0433.PNG" type="Texture" id=7]
 [ext_resource path="res://assets/sprites/buddy_left.PNG" type="Texture" id=8]
+[ext_resource path="res://scene/prefabs/unlock_hearth.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 18.2635, 0.0940971, 18.875, 26.875, 0, 26.875 )
@@ -502,6 +503,18 @@ tracks/5/keys = {
 "method": "_play_intro"
 } ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Player/Camera2D/Fade:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Dungeon" type="Node"]
 script = ExtResource( 1 )
@@ -536,7 +549,6 @@ texture = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
-state = 6
 
 [node name="Camera2D" parent="Player" index="2"]
 limit_left = -1047
@@ -565,8 +577,19 @@ anims/intro = SubResource( 12 )
 anims/start = SubResource( 15 )
 anims/steal = SubResource( 14 )
 
+[node name="Unlock_hearth" parent="." instance=ExtResource( 9 )]
+position = Vector2( 145, -856 )
+
+[connection signal="area_entered" from="dialogue_trigger" to="Player" method="block"]
+[connection signal="dialogic_signal" from="dialogue_trigger" to="Player" method="force_idle" flags=6]
+[connection signal="area_entered" from="Unlock_hearth/dialogue_trigger" to="Player" method="block" flags=6]
+[connection signal="body_entered" from="Unlock_hearth/dialogue_trigger" to="Player" method="block"]
+[connection signal="dialogic_signal" from="Unlock_hearth/dialogue_trigger" to="Player" method="force_idle"]
+
 [editable path="Player"]
 [editable path="Player/HurtBox"]
 [editable path="Player/HitBox"]
 [editable path="Player/musicBox"]
 [editable path="dialogue_trigger"]
+[editable path="Unlock_hearth"]
+[editable path="Unlock_hearth/dialogue_trigger"]
