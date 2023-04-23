@@ -55,7 +55,7 @@ var time_since_target_change = change_target_every + 0.1
 
 var current_target
 
-var player
+onready var player = get_node("%Player")
 
 func back_to_idle():
 	anims.play("idle_front")
@@ -180,6 +180,8 @@ func take_magical_damage(amount):
 
 func take_physical_damage(amount):
 	HP -= amount
+	setAgressivity(agressivity+1)
+	PlayerInfo.aggressivity += 1
 	$AudioStreamPlayer.set_stream(hitSound)
 	$AudioStreamPlayer.play()
 		

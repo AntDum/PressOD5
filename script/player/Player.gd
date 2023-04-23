@@ -95,7 +95,7 @@ func _physics_process(_delta: float) -> void:
 			new_anim = "shoot_love_" + facing
 			state = STATE_NULL
 		STATE_CAST_3:
-			new_anim = "shoot_love_" + facing
+			new_anim = "music"
 			$AudioStreamPlayer.set_stream(music_sound)
 			$AudioStreamPlayer.play()
 			state = STATE_NULL
