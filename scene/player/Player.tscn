@@ -21,8 +21,7 @@
 [ext_resource path="res://assets/sprites/players/attack/attack_back.PNG" type="Texture" id=20]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 29.0
-height = 30.0
+height = 22.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
@@ -620,12 +619,12 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=7]
-radius = 36.0
-height = 28.0
+radius = 20.0
+height = 42.0
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 21.0
-height = 48.0
+height = 0.0
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -638,6 +637,8 @@ scale = Vector2( 0.17, 0.17 )
 texture = ExtResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4, 33 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -668,6 +669,7 @@ anims/walk_right = SubResource( 20 )
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2( 5, 0 )
 shape = SubResource( 7 )
 
 [node name="HitBox" parent="." instance=ExtResource( 3 )]
