@@ -877,6 +877,10 @@ collision_mask = 8
 shape = SubResource( 22 )
 disabled = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer_damage" type="AudioStreamPlayer" parent="."]
+
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 
 [editable path="HurtBox"]
