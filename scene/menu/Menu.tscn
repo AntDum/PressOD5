@@ -238,7 +238,7 @@ text = "C'est parti, man !"
 flat = true
 
 [node name="Quit" type="Button" parent="HBoxContainer"]
-margin_top = 63.0
+margin_top = 179.0
 margin_right = 283.0
 margin_bottom = 122.0
 grow_horizontal = 2
