@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scene/prefabs/dialog_trigger.tscn" type="PackedScene" id=1]
+[ext_resource path="res://script/prefabs/unlock_hearth.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 57, 33 )
+
+[node name="Unlock_hearth" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="dialogue_trigger" parent="." instance=ExtResource( 1 )]
+timeline = "unlock_hearth"
+
+[node name="CollisionShape2D" parent="dialogue_trigger" index="0"]
+position = Vector2( -1, 0 )
+shape = SubResource( 1 )
+
+[connection signal="dialogic_signal" from="dialogue_trigger" to="." method="_on_dialogue_trigger_dialogic_signal"]
+
+[editable path="dialogue_trigger"]

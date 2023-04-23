@@ -1,0 +1,39 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1682176962.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1682176962.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "N'oublie pas que l'amour est plus fort que la haine, man. Si tu leur envoie de l'amour avec 2 les métalleux seront plus chill, main."
+		},
+		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1682244123.json",
+		"name": "unlock_hearth"
+	}
+}

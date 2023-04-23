@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scene/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/levels/Arena.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/prefabs/unlock_hearth.tscn" type="PackedScene" id=3]
 
 [node name="root" type="Node"]
 
@@ -11,3 +12,6 @@ position = Vector2( 5, 200 )
 
 [node name="Arena" parent="." instance=ExtResource( 2 )]
 position = Vector2( 5, 149 )
+
+[node name="Unlock_hearth" parent="." instance=ExtResource( 3 )]
+position = Vector2( -123, -167 )

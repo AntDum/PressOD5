@@ -54,6 +54,12 @@
 			"text": "T'es là pour ton van, dude ? Le boss est déjà loin, il l'a amené à notre QG : le HELLFEST !!! Si t'essayes de la rejoindre, je vais devoir te dévisser la tête."
 		},
 		{
+			"character": "character-1682177849.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Je suis dans ton chemin, avec espace tu peux intéragir avec moi."
+		},
+		{
 			"emit_signal": "end",
 			"event_id": "dialogic_040"
 		}

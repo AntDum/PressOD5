@@ -1,0 +1,55 @@
+{
+	"glossary": [
+		{
+			"extra": "",
+			"id": "1682244209-828",
+			"name": "q",
+			"text": "Aller à gauche",
+			"title": "Q",
+			"type": 1
+		},
+		{
+			"extra": "",
+			"id": "1682244224-124",
+			"name": "s",
+			"text": "Aller en arrière",
+			"title": "S",
+			"type": 1
+		},
+		{
+			"extra": "",
+			"id": "1682244195-557",
+			"name": "z",
+			"text": "Aller en avant",
+			"title": "Z",
+			"type": 1
+		},
+		{
+			"extra": "",
+			"id": "1682244243-670",
+			"name": "d",
+			"text": "Aller à droite",
+			"title": "D",
+			"type": 1
+		},
+		{
+			"extra": "",
+			"id": "1682244252-983",
+			"name": "2",
+			"text": "Lancer de l'amour",
+			"title": "2",
+			"type": 1
+		},
+		{
+			"extra": "",
+			"id": "1682244263-368",
+			"name": "espace",
+			"text": "Frapper ou intéragir",
+			"title": "espace",
+			"type": 1
+		}
+	],
+	"variables": [
+
+	]
+}
