@@ -6,8 +6,8 @@ export (PackedScene) var enemy
 signal arenaCleared
 
 onready var spawnArea = $SpawnArea/CollisionShape2D.shape.extents
-onready var upperLeft = $SpawnArea.global_position -  spawnArea
-onready var lowerRight = $SpawnArea.global_position +  spawnArea
+onready var upperLeft = $SpawnArea/CollisionShape2D.global_position -  spawnArea
+onready var lowerRight = $SpawnArea/CollisionShape2D.global_position +  spawnArea
 var remaining_mobs
 var player
 var aggressivity
@@ -28,18 +28,20 @@ func _ready():
 func spawn():
 	for i in range(remaining_mobs):
 		var new_enemy = enemy.instance()
-		new_enemy.set_player(player)
-		new_enemy.position = gen_random_spawn_point()
-		new_enemy.setAgressivity(aggressivity)
-
 		add_child(new_enemy)
+		new_enemy.set_player(player)
+		new_enemy.global_position = gen_random_spawn_point()
+		new_enemy.setAgressivity(aggressivity)
+		
 		$FightArea.connect("body_entered",new_enemy,"_on_PlayerEnteredArena")
 		$FightArea.connect("body_exited",new_enemy,"_on_PlayerExitedArena")
 		new_enemy.connect("pacified",self,"_on_mob_pacified")
+		new_enemy.connect("dead",self,"_on_mob_pacified")
 
 func _on_mob_pacified():
 	remaining_mobs -= 1
 	if(remaining_mobs <= 0):
+		print("COUCOU")
 		emit_signal("arenaCleared")
 
 
