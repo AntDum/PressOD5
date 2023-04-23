@@ -24,3 +24,10 @@ func _physics_process(delta):
 	var velocity = move_and_slide(direction * speed)
 	if (velocity.length() < 5):
 		set_physics_process(false)
+
+
+func _on_FitBox_area_entered(area):
+	print("ROCK DESTROY")
+	$HurtBox.queue_free()
+	$CollisionShape2D.queue_free()
+	speed = 0
