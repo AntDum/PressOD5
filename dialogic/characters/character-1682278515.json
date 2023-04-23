@@ -1,0 +1,21 @@
+{
+	"color": "#ffebd30b",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1682278515.json",
+	"mirror_portraits": false,
+	"name": "John Lennon",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/sprites/John Lennon/IMG_0437.PNG"
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}

@@ -20,7 +20,7 @@ func gen_random_spawn_point():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	aggressivity = PlayerInfo.aggressivity
-	remaining_mobs = (aggressivity / 10) + 1
+	remaining_mobs = aggressivity + 1
 
 
 func spawn():
@@ -39,11 +39,9 @@ func spawn():
 func _on_mob_pacified():
 	remaining_mobs -= 1
 	if(remaining_mobs <= 0):
-		print("COUCOU")
 		emit_signal("arenaCleared")
 
 
 
 func _on_TriggerSpawnArea_body_entered(body):
-	print("TRIGGER")
 	spawn()

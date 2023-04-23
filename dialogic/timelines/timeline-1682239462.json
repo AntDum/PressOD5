@@ -1,20 +1,36 @@
 {
 	"events": [
 		{
+			"character": "character-1682239517.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Boss, boss, on a retrouvé le van !"
+		},
+		{
 			"character": "character-1682239434.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Vite vite, prennez le van."
+			"text": "Parfait ! Il sera maintenant notre."
+		},
+		{
+			"emit_signal": "steal",
+			"event_id": "dialogic_040"
 		},
 		{
 			"character": "character-1682239517.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Oui boss"
+			"text": "C'est bon, on est dedans"
 		},
 		{
-			"emit_signal": "steal",
-			"event_id": "dialogic_040"
+			"character": "character-1682239434.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Parfait, go ! go ! go !"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0
 		}
 	],
 	"metadata": {

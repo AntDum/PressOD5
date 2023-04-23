@@ -24,7 +24,7 @@
 			"character": "character-1682176962.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "N'oublie pas que l'amour est plus fort que la haine, man. Si tu leur envoie de l'amour avec 2 les métalleux seront plus chill, main."
+			"text": "N'oublie pas que l'amour est plus fort que la haine, man. Si tu leur envoie de l'amour avec \"2\" les métalleux seront plus chill, man."
 		},
 		{
 			"emit_signal": "end",

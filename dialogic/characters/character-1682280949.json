@@ -1,0 +1,29 @@
+{
+	"color": "#ff000000",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1682280949.json",
+	"mirror_portraits": false,
+	"name": "Boss",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/sprites/enemy/idle/idle_front2.PNG"
+		},
+		{
+			"name": "attack_front",
+			"path": "res://assets/sprites/enemy/attack/attack_front2.PNG"
+		},
+		{
+			"name": "attack_left2",
+			"path": "res://assets/sprites/enemy/attack/attack_left2.PNG"
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}

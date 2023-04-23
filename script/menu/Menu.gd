@@ -11,9 +11,12 @@ func _on_Play_pressed():
 	#add_child(dialog)
 	$anims.play("launch")
 
-#
+
 func _on_Quit_pressed():
-	get_tree().quit()
+	$anims.play("quit")
 
 func _play():
 	emit_signal("change_scene", "res://scene/levels/1_Woodstock.tscn")
+	
+func _quit():
+	get_tree().quit()

@@ -1,0 +1,161 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1682177596.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "peace_right",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1682177596.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Par Babylone, vous nous avez pris notre van, c'est pas cool, man."
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1682280949.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1682280949.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "C'était notre van d'abord, vous nous l'avez pris c'est tout."
+		},
+		{
+			"character": "character-1682177596.json",
+			"event_id": "dialogic_001",
+			"portrait": "attack_front",
+			"text": "Même pas vrai, man, je 'ai acheté à l'heure ou le soleil se levait plus tôt dans la journée, man."
+		},
+		{
+			"character": "character-1682280949.json",
+			"event_id": "dialogic_001",
+			"portrait": "attack_front",
+			"text": "On voulais l'acheter mais j'ai du aller chercher de l'argent, quand nous sommes revenu vous l'aviez déjà pris, alors fais pas le gentil avec moi."
+		},
+		{
+			"character": "character-1682177596.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Oh non, man pas cool, on savait pas du tout, on est trop désolé, man"
+		},
+		{
+			"character": "character-1682280949.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "..."
+		},
+		{
+			"character": "character-1682177596.json",
+			"event_id": "dialogic_001",
+			"portrait": "peace_right",
+			"text": "Si vous voulez on peux partager le van, tous ensemble, man, après tout on est tous des enfants de la nature tu vois. Le but c'est juste profiter de la life, man."
+		},
+		{
+			"character": "character-1682280949.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "... C'est vrai nous pourrions tous en profiter comme ça."
+		},
+		{
+			"character": "character-1682177596.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Génial man. Dans le fond, tout peut-être résolut avec l'amour tu vois, man"
+		},
+		{
+			"character": "character-1682177596.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Check moi ça man"
+		},
+		{
+			"animation": "[No Animation]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1682177596.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "attack_right",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 2,
+			"z_index": 0
+		},
+		{
+			"animation": "[No Animation]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_position": false,
+			"change_z_index": false,
+			"character": "character-1682280949.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "attack_left2",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 2,
+			"z_index": 0
+		},
+		{
+			"character": "character-1682280949.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Tu peux jouer de la music avec nous, en appyant sur \"3\""
+		},
+		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1682280743.json",
+		"name": "ending"
+	}
+}

@@ -2,8 +2,11 @@ extends Node
 
 signal change_scene(to)
 
+var player
+
 func _ready():
 	$anims.play("intro")
+	player = $Player
 
 func _play_steal():
 	$anims.play("steal")
