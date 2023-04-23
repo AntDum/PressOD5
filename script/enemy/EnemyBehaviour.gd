@@ -13,11 +13,11 @@ const TRESHOLD = 1
 signal pacified
 signal dead
 
-
 enum State {
 	HAPPY,			# Ignores the player, moves randomly around one point
 	SURROUND,		# Gets close to the player and periodically CHARGE
 	CHARGE,			# Charges towards the player, inflicting damage
+	KICK,
 }
 
 export (State) var state = State.HAPPY
@@ -46,7 +46,6 @@ var charge_every_min = 3.0
 var charge_in = 0.0
 
 
-
 # After how many time to pick a new target
 export (float) var change_target_every = 5.0
 # Current value of the timer
@@ -54,7 +53,15 @@ var time_since_target_change = change_target_every + 0.1
 
 var current_target
 
-var player
+onready var player = $"%Player"
+
+func back_to_idle():
+	anims.play("idle_front")
+	current_target = return_to_circle()
+	anim = "idle_front"
+	new_anim = "idle_front"
+	charge_in = get_randf(charge_every_min, charge_every_max)
+	setState(State.SURROUND)
 
 # Determine state based on agressivity
 func setAgressivity(value):
@@ -72,12 +79,23 @@ func setState(newState):
 			happy_center = global_position
 			current_target = pick_happy_spot(get_randf(0.0, 1.0))
 			time_since_target_change = 0
+			show_angryness(0)
 		State.SURROUND:
 			charge_in = get_randf(charge_every_min, charge_every_max)
 			current_target = pick_spot_around_player()
 			time_since_target_change = 0
+			show_angryness(4)
 		State.CHARGE:
 			pass
+
+func show_angryness(angry_num):
+	var tween = create_tween()
+	tween.tween_property($angryness, "visible", true, 0)
+	tween.tween_property($angryness, "frame", angry_num, 1)
+	tween.tween_interval(5)
+	tween.tween_property($angryness, "visible", false, 0)
+	
+	
 
 # Moves towards target, dt is the time step, leapfrog order 2 (kdk) integration
 func move(target, dt):
@@ -148,19 +166,26 @@ func pick_happy_spot(angle):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	setState(State.HAPPY) # Replace with function body.
 
 func take_magical_damage(amount):
-	agressivity -= amount
+	setAgressivity(agressivity - amount)
+	if agressivity < 0:
+		agressivity = 0
 	if agressivity < TRESHOLD:
 		emit_signal("pacified")
 		setState(State.HAPPY)
 
 func take_physical_damage(amount):
 	HP -= amount
+	setAgressivity(agressivity + amount)
 	if HP <= 0:
-		emit_signal("dead")
+		emit_signal("dead")		
+		queue_free()
+		
+func set_player(plr):
+	player = plr
+	print_debug("Player set to ", player)
 
 func _physics_process(delta):
 	# Update time since last target change
@@ -171,7 +196,6 @@ func _physics_process(delta):
 			charge_in -= delta
 			# If time to charge and in range
 			if charge_in < 0.0 and (global_position - player.global_position).length() < CHARGE_RANGE:
-				charge_in = get_randf(charge_every_min, charge_every_max)
 				print_debug("Attacking player")
 				setState(State.CHARGE)
 			# If time to change target
@@ -195,9 +219,17 @@ func _physics_process(delta):
 			for i in get_slide_count():
 				var collision = get_slide_collision(i)
 				if collision.collider.name == "Player":
-					print_debug("Hit ", collision.collider.name)
-					current_target = return_to_circle()
-					setState(State.SURROUND)
+					state = State.KICK
+					# Anim
+					var walk_angle = atan2(velocity.y, velocity.x) + PI
+					if walk_angle < PI/4 or walk_angle > 7*PI/4:
+						anims.play("attack_left")
+					elif walk_angle < 3*PI/4:
+						anims.play("attack_back")
+					elif walk_angle < 5*PI/4:
+						anims.play("attack_right")
+					else:
+						anims.play("attack_front")
 	if new_anim != anim:
 		anim = new_anim
 		anims.play(anim)
@@ -210,3 +242,4 @@ func _on_PlayerEnteredArena(body):
 func _on_PlayerExitedArena(body):
 	print("PLAYER EXITED FIGHT ZONE")
 	setState(State.HAPPY)
+

@@ -28,7 +28,7 @@ func _ready():
 func spawn():
 	for i in range(remaining_mobs):
 		var new_enemy = enemy.instance()
-		new_enemy.player = player
+		new_enemy.set_player(player)
 		new_enemy.position = gen_random_spawn_point()
 		new_enemy.setAgressivity(aggressivity)
 

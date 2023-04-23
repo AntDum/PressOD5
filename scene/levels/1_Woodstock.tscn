@@ -235,4 +235,5 @@ shape = SubResource( 11 )
 [editable path="Player"]
 [editable path="Player/HurtBox"]
 [editable path="Player/HitBox"]
+[editable path="Player/musicBox"]
 [editable path="dialogue_trigger"]
