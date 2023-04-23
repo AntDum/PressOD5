@@ -2,6 +2,8 @@ extends Control
 
 signal change_scene(to)
 
+func _ready():
+	$anims.play("start")
 
 func _on_Play_pressed():
 	#var dialog = Dialogic.start("metal_interaction_1")
