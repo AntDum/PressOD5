@@ -239,12 +239,6 @@ func _on_PlayerEnteredArena(body):
 func _on_PlayerExitedArena(body):
 	setState(State.HAPPY)
 
-
-
-func _on_HurtBox_area_entered(area):
-	take_physical_damage(1)
-
-
 func _on_AudioStreamPlayer_finished():
 	if HP <= 0:
 		queue_free()
