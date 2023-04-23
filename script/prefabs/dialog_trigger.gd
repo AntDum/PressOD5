@@ -11,12 +11,10 @@ func _on_dialogue_trigger_body_entered(_body):
 	trigger()
 
 func trigger():
-	player.state = player.STATE_BLOCKED
 	var dialog = Dialogic.start(timeline)
 	add_child(dialog)
 	dialog.connect("dialogic_signal", self, "transfere_signal")
 
 func transfere_signal(message):
-	player.force_idle()
 	emit_signal("dialogic_signal", message)
 	call_deferred("queue_free")

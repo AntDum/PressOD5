@@ -14,13 +14,13 @@
 [ext_resource path="res://scene/prefabs/lever.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 70.7813, 0, 70.5938 )
+points = PoolVector2Array( 0, 0, 32, 0, 32, 72.6865, 0, 73.5823 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 19.7852, 0.127068, 32, 0, 32, 70.5938, 19.4375, 70.6563 )
+points = PoolVector2Array( 19.7852, 0.127068, 32, 0, 32, 74.0302, 20.0091, 73.8062 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 0, 0, 11.5999, 0.347336, 12.0625, 72.0313, 0, 72.3438 )
+points = PoolVector2Array( 0, 0, 11.5999, 0.347336, 12.2203, 75.1499, 0, 75.1499 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0.531219, 31.872, 0.686737, 32.0275, 31.4797, 32.3386, 31.4797, 95.7907, 19.3491, 96, 18.5715, 74.0179, 0.531219, 74.0179 )
@@ -361,29 +361,6 @@ position = Vector2( -9.53674e-06, 1.33514e-05 )
 scale = Vector2( 0.0332031, 0.0351563 )
 texture = ExtResource( 10 )
 
-[node name="pushable2" type="KinematicBody2D" parent="."]
-position = Vector2( 484, -177 )
-script = ExtResource( 5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable2"]
-shape = SubResource( 17 )
-
-[node name="HurtBox" parent="pushable2" instance=ExtResource( 3 )]
-collision_layer = 8
-
-[node name="CollisionShape2D" parent="pushable2/HurtBox" index="0"]
-shape = SubResource( 18 )
-
-[node name="FitBox" type="Area2D" parent="pushable2"]
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pushable2/FitBox"]
-shape = SubResource( 25 )
-
-[node name="Sprite" type="Sprite" parent="pushable2"]
-scale = Vector2( 0.0332031, 0.0351563 )
-texture = ExtResource( 10 )
-
 [node name="pushable3" type="KinematicBody2D" parent="."]
 position = Vector2( 867, 293 )
 script = ExtResource( 5 )
@@ -513,21 +490,6 @@ collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hole/FitBox"]
 position = Vector2( 335.5, 683.5 )
-shape = SubResource( 24 )
-
-[node name="Hole2" type="StaticBody2D" parent="."]
-position = Vector2( 336, -177 )
-collision_layer = 16
-collision_mask = 16
-script = ExtResource( 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hole2"]
-shape = SubResource( 23 )
-
-[node name="FitBox" type="Area2D" parent="Hole2"]
-collision_layer = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hole2/FitBox"]
 shape = SubResource( 24 )
 
 [node name="door" parent="." instance=ExtResource( 4 )]
@@ -791,11 +753,6 @@ modulate = Color( 0, 0, 1, 1 )
 
 [editable path="pushable/HurtBox"]
 [editable path="pushable2/HurtBox"]
-[editable path="pushable3/HurtBox"]
-[editable path="pushable4/HurtBox"]
-[editable path="pushable5/HurtBox"]
-[editable path="pushable7/HurtBox"]
-[editable path="pushable6/HurtBox"]
 [editable path="Arena2/door"]
 [editable path="BlueDoor"]
 [editable path="BlueDoor4"]

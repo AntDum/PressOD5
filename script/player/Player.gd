@@ -95,7 +95,7 @@ func _physics_process(_delta: float) -> void:
 			new_anim = "shoot_love_" + facing
 			state = STATE_NULL
 		STATE_CAST_3:
-			new_anim = "shoot_love_" + facing
+			new_anim = "music"
 			$AudioStreamPlayer.set_stream(music_sound)
 			$AudioStreamPlayer.play()
 			state = STATE_NULL
@@ -138,7 +138,7 @@ func _ready():
 	
 func _get_action():
 	if Input.is_action_just_pressed("action"):
-				state = STATE_START_ATTACK
+		state = STATE_START_ATTACK
 	if Input.is_action_just_pressed("sort_1") and PlayerInfo.spell_1_unlock:
 		state = STATE_CAST_1
 	if Input.is_action_just_pressed("sort_2") and PlayerInfo.spell_2_unlock:

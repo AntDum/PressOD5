@@ -9,20 +9,18 @@ onready var spawnArea = $SpawnArea/CollisionShape2D.shape.extents
 onready var upperLeft = $SpawnArea/CollisionShape2D.global_position -  spawnArea
 onready var lowerRight = $SpawnArea/CollisionShape2D.global_position +  spawnArea
 var remaining_mobs
-var player
+onready var player = $"%Player"
 var aggressivity
 
 func gen_random_spawn_point():
 	var x = rand_range(upperLeft.x, lowerRight.x)
 	var y = rand_range(upperLeft.y, lowerRight.y)
-	print("New pos ",x,y)
 	return Vector2(x, y)
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	aggressivity = PlayerInfo.aggressivity
 	remaining_mobs = (aggressivity / 10) + 1
-	print(player)
 
 
 func spawn():

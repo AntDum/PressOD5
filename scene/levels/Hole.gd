@@ -13,7 +13,7 @@ func _ready():
 
 
 
-func _on_FitBox_area_entered(area):
+func _on_FitBox_area_entered():
 	print("HOLE DESTROYED")
 	queue_free()
 	$CollisionShape2D.queue_free()
