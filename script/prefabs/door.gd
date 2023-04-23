@@ -25,7 +25,7 @@ func _on_Arena_arenaCleared():
 	flip()
 	
 func _on_goodLever_activated():
-	print("Openning door")
+	print("Opening door")
 	open()
 	
 func _on_badLever_activated():
@@ -34,4 +34,8 @@ func _on_badLever_activated():
 
 
 func _on_wrongLever_activated():
+	pass # Replace with function body.
+
+
+func _on_leverRed2_activated():
 	pass # Replace with function body.

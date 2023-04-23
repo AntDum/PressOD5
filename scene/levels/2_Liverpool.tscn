@@ -615,6 +615,32 @@ position = Vector2( -10, -12 )
 scale = Vector2( 0.0751953, 0.0634766 )
 texture = ExtResource( 11 )
 
+[node name="BlueDoor4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 867, 361 )
+
+[node name="shape" parent="BlueDoor4/body" index="0"]
+position = Vector2( -8.5, 1 )
+shape = SubResource( 26 )
+
+[node name="Sprite" type="Sprite" parent="BlueDoor4"]
+modulate = Color( 0, 0, 1, 1 )
+position = Vector2( -10, -12 )
+scale = Vector2( 0.0751953, 0.0634766 )
+texture = ExtResource( 11 )
+
+[node name="BlueDoor3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1282, 360 )
+
+[node name="shape" parent="BlueDoor3/body" index="0"]
+position = Vector2( -8.5, 1 )
+shape = SubResource( 26 )
+
+[node name="Sprite" type="Sprite" parent="BlueDoor3"]
+modulate = Color( 0, 0, 1, 1 )
+position = Vector2( -10, -12 )
+scale = Vector2( 0.0751953, 0.0634766 )
+texture = ExtResource( 11 )
+
 [node name="BlueDoor2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 793, -177 )
 
@@ -638,6 +664,45 @@ shape = SubResource( 27 )
 [node name="Sprite" type="Sprite" parent="RedDoor"]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 6, -12 )
+scale = Vector2( 0.0732422, 0.0648193 )
+texture = ExtResource( 11 )
+
+[node name="RedDoor4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 969, 434 )
+
+[node name="shape" parent="RedDoor4/body" index="0"]
+position = Vector2( 5.5, 14.5 )
+shape = SubResource( 27 )
+
+[node name="Sprite" type="Sprite" parent="RedDoor4"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 6, -12 )
+scale = Vector2( 0.0732422, 0.0648193 )
+texture = ExtResource( 11 )
+
+[node name="RedDoor3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1068, 434 )
+
+[node name="shape" parent="RedDoor3/body" index="0"]
+position = Vector2( 5.5, 14.5 )
+shape = SubResource( 27 )
+
+[node name="Sprite" type="Sprite" parent="RedDoor3"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 6, -12 )
+scale = Vector2( 0.0732422, 0.0648193 )
+texture = ExtResource( 11 )
+
+[node name="RedDoor2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1157, 419 )
+
+[node name="shape" parent="RedDoor2/body" index="0"]
+position = Vector2( 5.5, 14.5 )
+shape = SubResource( 27 )
+
+[node name="Sprite" type="Sprite" parent="RedDoor2"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 7, 0 )
 scale = Vector2( 0.0732422, 0.0648193 )
 texture = ExtResource( 11 )
 
@@ -702,14 +767,27 @@ modulate = Color( 0, 0, 1, 1 )
 [connection signal="activated" from="leverRed" to="BlueDoor" method="_on_badLever_activated"]
 [connection signal="activated" from="leverRed" to="RedDoor" method="_on_goodLever_activated"]
 [connection signal="activated" from="leverRed" to="BlueDoor2" method="_on_badLever_activated"]
+[connection signal="activated" from="leverRed" to="RedDoor2" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverRed" to="RedDoor3" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverRed" to="RedDoor4" method="_on_goodLever_activated"]
 [connection signal="activated" from="leverRed2" to="BlueDoor" method="_on_badLever_activated"]
 [connection signal="activated" from="leverRed2" to="RedDoor" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverRed2" to="BlueDoor2" method="_on_badLever_activated"]
+[connection signal="activated" from="leverRed2" to="RedDoor2" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverRed2" to="RedDoor3" method="_on_leverRed2_activated"]
+[connection signal="activated" from="leverRed2" to="RedDoor4" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverRed2" to="BlueDoor3" method="_on_badLever_activated"]
 [connection signal="activated" from="leverBlue" to="BlueDoor" method="_on_goodLever_activated"]
 [connection signal="activated" from="leverBlue" to="RedDoor" method="_on_badLever_activated"]
 [connection signal="activated" from="leverBlue" to="BlueDoor2" method="_on_goodLever_activated"]
 [connection signal="activated" from="leverBlue2" to="BlueDoor" method="_on_goodLever_activated"]
 [connection signal="activated" from="leverBlue2" to="RedDoor" method="_on_badLever_activated"]
 [connection signal="activated" from="leverBlue2" to="BlueDoor2" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverBlue2" to="RedDoor2" method="_on_badLever_activated"]
+[connection signal="activated" from="leverBlue2" to="RedDoor3" method="_on_badLever_activated"]
+[connection signal="activated" from="leverBlue2" to="RedDoor4" method="_on_badLever_activated"]
+[connection signal="activated" from="leverBlue2" to="BlueDoor3" method="_on_goodLever_activated"]
+[connection signal="activated" from="leverBlue2" to="BlueDoor4" method="_on_goodLever_activated"]
 
 [editable path="pushable/HurtBox"]
 [editable path="pushable2/HurtBox"]
@@ -720,8 +798,13 @@ modulate = Color( 0, 0, 1, 1 )
 [editable path="pushable6/HurtBox"]
 [editable path="Arena2/door"]
 [editable path="BlueDoor"]
+[editable path="BlueDoor4"]
+[editable path="BlueDoor3"]
 [editable path="BlueDoor2"]
 [editable path="RedDoor"]
+[editable path="RedDoor4"]
+[editable path="RedDoor3"]
+[editable path="RedDoor2"]
 [editable path="leverRed"]
 [editable path="leverRed/HurtBox"]
 [editable path="leverRed2"]
