@@ -180,15 +180,8 @@ func take_magical_damage(amount):
 
 func take_physical_damage(amount):
 	HP -= amount
-<<<<<<< Updated upstream
-	setAgressivity(agressivity + amount)
-	if HP <= 0:
-		emit_signal("dead")		
-		queue_free()
-=======
 	$AudioStreamPlayer.set_stream(hitSound)
 	$AudioStreamPlayer.play()
->>>>>>> Stashed changes
 		
 func set_player(plr):
 	player = plr
@@ -246,8 +239,6 @@ func _on_PlayerEnteredArena(body):
 func _on_PlayerExitedArena(body):
 	setState(State.HAPPY)
 
-<<<<<<< Updated upstream
-=======
 
 
 func _on_HurtBox_area_entered(area):
@@ -258,4 +249,3 @@ func _on_AudioStreamPlayer_finished():
 	if HP <= 0:
 		queue_free()
 		emit_signal("dead")
->>>>>>> Stashed changes
