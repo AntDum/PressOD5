@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://script/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://scene/prefabs/HurtBox.tscn" type="PackedScene" id=2]
@@ -158,6 +158,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("musicBox/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -551,6 +563,27 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.98, 0.95 ) ]
 }
 
+[sub_resource type="Animation" id=23]
+resource_name = "music"
+tracks/0/type = "value"
+tracks/0/path = NodePath("musicBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "shoot_love"
+
+[sub_resource type="Animation" id=25]
+resource_name = "trapping"
+
 [sub_resource type="Animation" id=17]
 resource_name = "walk_back"
 length = 0.6
@@ -627,6 +660,9 @@ height = 28.0
 radius = 21.0
 height = 48.0
 
+[sub_resource type="CircleShape2D" id=22]
+radius = 250.0
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 1 )
@@ -659,6 +695,9 @@ anims/idle_back = SubResource( 13 )
 anims/idle_front = SubResource( 14 )
 anims/idle_left = SubResource( 15 )
 anims/idle_right = SubResource( 16 )
+anims/music = SubResource( 23 )
+anims/shoot_love = SubResource( 24 )
+anims/trapping = SubResource( 25 )
 anims/walk_back = SubResource( 17 )
 anims/walk_front = SubResource( 18 )
 anims/walk_left = SubResource( 19 )
@@ -678,5 +717,19 @@ position = Vector2( 47, 0 )
 shape = SubResource( 8 )
 disabled = true
 
+[node name="placeHolderTrap" type="Position2D" parent="."]
+
+[node name="rayCastSpell" type="RayCast2D" parent="."]
+enabled = true
+collision_mask = 8
+
+[node name="musicBox" parent="." instance=ExtResource( 3 )]
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="musicBox" index="0"]
+shape = SubResource( 22 )
+disabled = true
+
 [editable path="HurtBox"]
 [editable path="HitBox"]
+[editable path="musicBox"]

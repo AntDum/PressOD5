@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://script/enemy/EnemyBehaviour.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/enemy/idle/idle_right.PNG" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/sprites/enemy/walk/walk_left_1.PNG" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/enemy/walk/walk_right_2.PNG" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/enemy/walk/walk_right_1.PNG" type="Texture" id=13]
+[ext_resource path="res://scene/prefabs/HurtBox.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 23, 41 )
@@ -224,6 +225,9 @@ tracks/0/keys = {
 "values": [ ExtResource( 13 ), ExtResource( 12 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 21, 40 )
+
 [node name="KinematicBody2D" type="KinematicBody2D"]
 collision_layer = 0
 collision_mask = 3
@@ -251,3 +255,11 @@ anims/walk_back = SubResource( 8 )
 anims/walk_front = SubResource( 7 )
 anims/walk_left = SubResource( 9 )
 anims/walk_right = SubResource( 10 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 14 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource( 11 )
+
+[editable path="HurtBox"]

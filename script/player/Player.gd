@@ -2,11 +2,16 @@ extends KinematicBody2D
 
 
 export var speed := 200.0
+export var spell_trap_dist := 200
+export var spell_coeur_dist := 275
+
 var velocity := Vector2()
 
 enum { STATE_IDLE, STATE_WALKING, STATE_START_ATTACK, STATE_ATTACK, STATE_HURT, STATE_DIE, STATE_BLOCKED, STATE_NULL, STATE_CAST_1, STATE_CAST_2, STATE_CAST_3 }
 
 onready var anims = $Anim
+onready var placeHolderTrap = $placeHolderTrap
+onready var rayCastSpell = $rayCastSpell
 
 var state = STATE_IDLE
 
@@ -39,6 +44,12 @@ func _physics_process(_delta: float) -> void:
 		STATE_WALKING:
 			if Input.is_action_just_pressed("action"):
 				state = STATE_START_ATTACK
+			if Input.is_action_just_pressed("sort_1"):
+				state = STATE_CAST_1
+			if Input.is_action_just_pressed("sort_2"):
+				state = STATE_CAST_2
+			if Input.is_action_just_pressed("sort_3"):
+				state = STATE_CAST_3
 			
 			var input := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 			velocity = input * speed
@@ -71,7 +82,6 @@ func _physics_process(_delta: float) -> void:
 		STATE_NULL:
 			pass
 		STATE_CAST_1:
-			
 			state = STATE_IDLE
 		STATE_CAST_2:
 			state = STATE_IDLE
@@ -114,3 +124,10 @@ func _update_facing():
 		facing = "back"
 	if Input.is_action_pressed("move_down"):
 		facing = "front"
+	
+	var direction = velocity.normalized()
+	
+	if (direction.length() > 0.5):
+		placeHolderTrap.position = direction * spell_trap_dist
+		rayCastSpell.cast_to = direction * spell_coeur_dist
+	
