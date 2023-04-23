@@ -155,11 +155,12 @@ func pick_happy_spot(angle):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	setState(State.HAPPY) # Replace with function body.
 
 func take_magical_damage(amount):
 	agressivity -= amount
+	if agressivity < 0:
+		agressivity = 0
 	if agressivity < TRESHOLD:
 		emit_signal("pacified")
 		setState(State.HAPPY)
@@ -167,7 +168,12 @@ func take_magical_damage(amount):
 func take_physical_damage(amount):
 	HP -= amount
 	if HP <= 0:
+		queue_free()
 		emit_signal("dead")
+		
+func set_player(plr):
+	player = plr
+	print_debug("Player set to ", player)
 
 func _physics_process(delta):
 	# Update time since last target change
@@ -224,3 +230,8 @@ func _on_PlayerEnteredArena(body):
 func _on_PlayerExitedArena(body):
 	print("PLAYER EXITED FIGHT ZONE")
 	setState(State.HAPPY)
+
+
+
+func _on_HurtBox_area_entered(area):
+	take_physical_damage(1)

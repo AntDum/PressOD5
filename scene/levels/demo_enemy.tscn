@@ -3,10 +3,11 @@
 [ext_resource path="res://scene/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/levels/Arena.tscn" type="PackedScene" id=2]
 
-[node name="Node" type="Node"]
+[node name="root" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
 position = Vector2( 5, 200 )
 
 [node name="Arena" parent="." instance=ExtResource( 2 )]
-position = Vector2( -2, -283 )
+position = Vector2( 5, 149 )
