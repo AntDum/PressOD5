@@ -27,7 +27,6 @@ func _physics_process(delta):
 
 
 func _on_FitBox_area_entered(area):
-	print("ROCK DESTROY")
 	$HurtBox.queue_free()
 	$CollisionShape2D.queue_free()
 	speed = 0
