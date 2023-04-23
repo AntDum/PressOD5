@@ -7,7 +7,7 @@ export var spell_coeur_dist := 275
 
 var velocity := Vector2()
 
-enum { STATE_IDLE, STATE_WALKING, STATE_START_ATTACK, STATE_ATTACK, STATE_HURT, STATE_DIE, STATE_BLOCKED, STATE_NULL, STATE_CAST_1, STATE_CAST_2, STATE_CAST_3 }
+enum  { STATE_IDLE, STATE_WALKING, STATE_START_ATTACK, STATE_ATTACK, STATE_HURT, STATE_DIE, STATE_BLOCKED, STATE_NULL, STATE_CAST_1, STATE_CAST_2, STATE_CAST_3 }
 
 onready var anims = $Anim
 onready var placeHolderTrap = $placeHolderTrap
@@ -16,7 +16,7 @@ onready var rayCastSpell = $rayCastSpell
 var hearthScene = preload("res://scene/prefabs/hearth.tscn")
 var joinScene = preload("res://scene/prefabs/join.tscn")
 
-var state = STATE_IDLE
+export var state := STATE_IDLE
 
 var anim = ""
 var new_anim = ""
@@ -122,7 +122,8 @@ func _ready():
 	anims.play("idle_front")
 	$Camera2D/Fade.black()
 	yield(get_tree(), "idle_frame")
-	$Camera2D/Fade.fade_out()
+	if (state != STATE_BLOCKED):
+		$Camera2D/Fade.fade_out()
 	
 func _get_action():
 	if Input.is_action_just_pressed("action"):
@@ -159,3 +160,6 @@ func _on_HitBox_area_entered(area):
 	var enemy = area.get_parent()
 	if enemy.has_method("take_physical_damage"):
 		enemy.take_physical_damage(1)
+		
+func block():
+	state = STATE_BLOCKED
