@@ -1,10 +1,13 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/sprites/terrain/terrain_atlas.png" type="Texture" id=1]
 [ext_resource path="res://scene/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scene/prefabs/HurtBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scene/prefabs/door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://script/prefabs/pushable.gd" type="Script" id=5]
+[ext_resource path="res://script/levels/Arena.gd" type="Script" id=6]
+[ext_resource path="res://scene/enemy/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scene/levels/2_Liverpool.gd" type="Script" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 72.6865, 0, 73.5823 )
@@ -286,7 +289,20 @@ extents = Vector2( 33.5, 36 )
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 33.5, 36 )
 
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 169.5, 235 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 258.5, 240 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 143.5, 41.5 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 36.5, 48.5 )
+
 [node name="Dungeon" type="Node"]
+script = ExtResource( 8 )
 
 [node name="GroundTiles" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -323,6 +339,79 @@ shape = SubResource( 18 )
 [node name="door" parent="." instance=ExtResource( 4 )]
 position = Vector2( 320, 261 )
 
+[node name="Arena" type="Node2D" parent="."]
+position = Vector2( 1055, -310 )
+script = ExtResource( 6 )
+enemy = ExtResource( 7 )
+
+[node name="SpawnArea" type="Area2D" parent="Arena"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/SpawnArea"]
+position = Vector2( 101.5, 133 )
+shape = SubResource( 19 )
+
+[node name="FightArea" type="Area2D" parent="Arena"]
+position = Vector2( 2, 65 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/FightArea"]
+position = Vector2( 11.5, 68 )
+shape = SubResource( 20 )
+
+[node name="TriggerSpawnArea" type="Area2D" parent="Arena"]
+position = Vector2( 2, 149 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/TriggerSpawnArea"]
+position = Vector2( -159, -16 )
+shape = SubResource( 21 )
+
+[node name="Arena2" type="Node2D" parent="."]
+position = Vector2( 1068, 723 )
+script = ExtResource( 6 )
+enemy = ExtResource( 7 )
+
+[node name="SpawnArea" type="Area2D" parent="Arena2"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena2/SpawnArea"]
+position = Vector2( 2, 149 )
+shape = SubResource( 19 )
+
+[node name="FightArea" type="Area2D" parent="Arena2"]
+position = Vector2( 2, 65 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena2/FightArea"]
+position = Vector2( -3.5, 8.5 )
+shape = SubResource( 20 )
+
+[node name="TriggerSpawnArea" type="Area2D" parent="Arena2"]
+position = Vector2( 2, 149 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena2/TriggerSpawnArea"]
+position = Vector2( -7.5, -286.5 )
+shape = SubResource( 21 )
+
+[node name="door" parent="Arena2" instance=ExtResource( 4 )]
+position = Vector2( -13, -624 )
+
+[node name="shape" parent="Arena2/door/body" index="0"]
+position = Vector2( 17.5, 15.5 )
+shape = SubResource( 22 )
+
 [connection signal="area_entered" from="pushable/HurtBox" to="pushable" method="_on_HurtBox_area_entered"]
+[connection signal="arenaCleared" from="Arena" to="Arena2/door" method="_on_Arena_arenaCleared"]
+[connection signal="body_entered" from="Arena/TriggerSpawnArea" to="Arena" method="_on_TriggerSpawnArea_body_entered" flags=6]
+[connection signal="body_entered" from="Arena2/TriggerSpawnArea" to="Arena2" method="_on_TriggerSpawnArea_body_entered" flags=6]
 
 [editable path="pushable/HurtBox"]
+[editable path="Arena2/door"]
