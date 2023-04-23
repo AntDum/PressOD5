@@ -83,14 +83,21 @@ _global_script_class_icons={
 boot_splash/bg_color.editor=Color( 1, 1, 1, 1 )
 boot_splash/image.editor="res://addons/bootsplash/res/sprites/bootsplash.png"
 config/name="GameJam5"
+<<<<<<< HEAD
 run/start_scene="res://scene/autoload/SceneManager.tscn"
 run/main_scene="res://addons/bootsplash/BootSplash.tscn"
+=======
+run/main_scene="res://scene/autoload/SceneManager.tscn"
+>>>>>>> f045657d7d8b4277ff2b11be3561ce88652223e1
 boot_splash/image="res://addons/bootsplash/res/sprites/black.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
+<<<<<<< HEAD
 <<<<<<<Updatedupstreamrun/start_scene="res://scene/menu/main.tscn"
 <<<<<<<Updatedupstreamboot_splash/bg_color.editor=Color( 1, 1, 1, 1 )
+=======
+>>>>>>> f045657d7d8b4277ff2b11be3561ce88652223e1
 
 [autoload]
 
