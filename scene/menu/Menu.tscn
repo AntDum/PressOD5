@@ -1,14 +1,201 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://script/menu/Menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/modernlove_big.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/menu/menu_font.PNG" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/menu/peace_out.PNG" type="Texture" id=4]
+[ext_resource path="res://assets/theme/title.tres" type="Theme" id=5]
 
-[sub_resource type="OpenSimplexNoise" id=1]
-period = 122.3
-persistence = 0.772
-lacunarity = 1.35
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Logo:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Logo:margin_left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HBoxContainer/Play:margin_left")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HBoxContainer/Quit:margin_left")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
-[sub_resource type="NoiseTexture" id=2]
-noise = SubResource( 1 )
+[sub_resource type="Animation" id=3]
+resource_name = "launch"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Logo:margin_left")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 0.840896, 0.659754 ),
+"update": 0,
+"values": [ 0.0, -150, 1500 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HBoxContainer/Quit:margin_left")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.001, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -150, 1500 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HBoxContainer/Play:margin_left")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -150, 1500 ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_play"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "start"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Logo:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -300, -0.25, 0, 0.5, 138.306, 0, -0.5, 160.792, 0.6, -88.8851 ),
+"times": PoolRealArray( 0.6, 1.4 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 0.34151 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -20,8 +207,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 40.0
 margin_bottom = 40.0
-texture = SubResource( 2 )
+texture = ExtResource( 3 )
 expand = true
+
+[node name="Logo" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
 
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.4
@@ -34,23 +226,42 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Play" type="Button" parent="HBoxContainer"]
-margin_right = 244.0
-margin_bottom = 20.0
+margin_right = 283.0
+margin_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "C'est parti, man !"
 flat = true
 
 [node name="Quit" type="Button" parent="HBoxContainer"]
-margin_top = 24.0
-margin_right = 244.0
-margin_bottom = 44.0
+margin_top = 63.0
+margin_right = 283.0
+margin_bottom = 122.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Bye mon frère"
 flat = true
+
+[node name="anims" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/launch = SubResource( 3 )
+anims/start = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+color = Color( 0, 0, 0, 1 )
 
 [connection signal="pressed" from="HBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_Quit_pressed"]
