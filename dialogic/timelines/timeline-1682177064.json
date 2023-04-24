@@ -55,7 +55,7 @@
 			"text": "Babylone, c'est pas cool ça man."
 		},
 		{
-			"animation": "[Default]",
+			"animation": "[No Animation]",
 			"animation_length": 0,
 			"change_mirror_portrait": false,
 			"change_position": false,
@@ -91,7 +91,7 @@
 			"character": "character-1682176962.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Tu peux y aller en utilisant Z,Q,S,D pour te deplacer, man"
+			"text": "Tu peux y aller en utilisant \"Z,Q,S,D\" pour te deplacer, man"
 		},
 		{
 			"emit_signal": "end",

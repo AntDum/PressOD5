@@ -1,10 +1,10 @@
 extends Node
 
-var aggressivity := 30
+var aggressivity := 1
 
-var spell_1_unlock := true
-var spell_2_unlock := true
-var spell_3_unlock := true
+var spell_1_unlock := false
+var spell_2_unlock := false
+var spell_3_unlock := false
 
 var join_damage := 2
 var hearth_damage := 1

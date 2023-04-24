@@ -37,6 +37,7 @@ func get_randf(from, to):
 var agressivity = 0.0
 var HP = 3
 var velocity = Vector2.ZERO
+var surround_offset
 
 # Point around which to walk when in happy state
 var happy_center = Vector2.ZERO
@@ -84,7 +85,8 @@ func setState(newState):
 			show_angryness(0)
 		State.SURROUND:
 			charge_in = get_randf(charge_every_min, charge_every_max)
-			current_target = pick_spot_around_player()
+			surround_offset = pick_spot_around_player()
+			current_target = surround_offset + player.global_position
 			time_since_target_change = 0
 			show_angryness(4)
 		State.CHARGE:
@@ -135,7 +137,7 @@ func move(target, dt):
 		anims.play(anim)
 
 func pick_spot_around_player():
-	var center = player.global_position
+	var center = Vector2.ZERO
 	var distance = 200
 	var angle_with_player = atan2(global_position.y - center.y, global_position.x - center.x)
 
@@ -200,8 +202,9 @@ func _physics_process(delta):
 				setState(State.CHARGE)
 			# If time to change target
 			if time_since_target_change > change_target_every:
-				current_target = pick_spot_around_player()
+				surround_offset = pick_spot_around_player()
 				time_since_target_change = 0
+			current_target = surround_offset + player.global_position
 			move(current_target, delta)
 		State.HAPPY:
 			if time_since_target_change > change_target_every:

@@ -14,6 +14,18 @@
 		{
 			"name": "Default",
 			"path": "res://assets/sprites/players/idle/idle_front.PNG"
+		},
+		{
+			"name": "attack_right",
+			"path": "res://assets/sprites/players/attack/attack_right.PNG"
+		},
+		{
+			"name": "peace_right",
+			"path": "res://assets/sprites/players/peace/peace_right.PNG"
+		},
+		{
+			"name": "attack_front",
+			"path": "res://assets/sprites/players/attack/attack_front.PNG"
 		}
 	],
 	"scale": 100,

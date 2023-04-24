@@ -1,0 +1,51 @@
+{
+	"events": [
+		{
+			"character": "character-1682177596.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Mais je connais ce man, là bas !"
+		},
+		{
+			"animation": "slide_in_right.gd",
+			"animation_length": 1,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1682278515.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1682278515.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Salut man, j'ai un secret pour toi."
+		},
+		{
+			"character": "character-1682278515.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Si tu trouves les métalleux trop tendu, tu peux presser \"1\", tu vas voir c'est de la bonne, man, avec ça ils seront beaucoup plus sympa après."
+		},
+		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1682278504.json",
+		"name": "unlock_join"
+	}
+}

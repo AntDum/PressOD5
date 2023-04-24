@@ -25,11 +25,9 @@ func _on_Arena_arenaCleared():
 	flip()
 	
 func _on_goodLever_activated():
-	print("Opening door")
 	open()
 	
 func _on_badLever_activated():
-	print("Closing door")
 	close()
 
 
